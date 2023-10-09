@@ -1,0 +1,184 @@
+---
+// import the Image component and the image
+import { Image } from 'astro:assets';
+import myImage from "../src/assets/images/eye.svg"; 
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Input 01</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        >
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="centering">
+            <div class="box">
+                <div class="input__wrapper">
+                    <input
+                        id="password"
+                        type="password"
+                        class="input__field"
+                        placeholder="Your Password"
+                    >
+                    <label
+                        for="password"
+                        class="input__label"
+                    >
+                        Password
+                    </label>
+                    <img
+                        alt="Eye Icon"
+                        title="Eye Icon"
+                        src="../src/assets/images/eye.svg"
+                        class="input__icon"
+                    >
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+:root {
+  --primary: #007FFF;
+  --secondary: #6F7E8C;
+  --hover: #F5F5F5;
+  --text: #212121;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: white;
+  padding: 24px;
+  padding-top: 12px;
+  border-radius: 16px;
+}
+
+.box h2 {
+  margin: 0px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--primary);
+}
+
+.input__wrapper {
+  position: relative;
+  padding: 15px 0 0;
+}
+
+.input__field {
+  border: 0;
+  border-bottom: 2px solid var(--secondary);
+  outline: 0;
+  font-size: 16px;
+  color: var(--text);
+  padding: 4px 0px;
+  padding-right: 32px;
+
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.input__field::placeholder {
+  color: transparent;
+}
+
+.input__field:placeholder-shown ~ .input__label {
+  font-size: 16px;
+  cursor: text;
+  color: var(--secondary);
+  top: 20px;
+}
+
+label,
+.input__field:focus ~ .input__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  font-size: 14px;
+  left: -1px;
+  color: var(--secondary);
+  transition: 0.3s;
+}
+
+.input__field:focus ~ .input__label {
+  color: var(--primary);
+}
+
+.input__field:focus {
+  border-bottom: 2px solid var(--primary);
+}
+
+.input__icon {
+  position: absolute;
+  right: -14px;
+  bottom: -11px;
+  width: 26px;
+  height: 26px;
+  padding: 2px;
+  transform: translate(-50%,-50%);
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.input__icon:hover {
+  border-radius: 50%;
+  background-color: var(--hover);
+}
+</style>
+
+<script>
+    
+const input = document.querySelector(".input__field");
+const inputIcon = document.querySelector(".input__icon");
+
+inputIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    inputIcon.setAttribute(
+        'src', 
+        input.getAttribute('type') === 'password' ?
+        '../src/assets/images/eye-off.svg'
+          :
+        '../src/assets/images/eye.svg'
+    );
+
+    input.setAttribute(
+        'type', 
+        input.getAttribute('type') === 'password' ? 
+        'text'
+          :
+        'password'
+    );
+});
+</script>
