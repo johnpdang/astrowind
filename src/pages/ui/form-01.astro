@@ -1,7 +1,7 @@
 ---
 // import the Image component and the image
 import { Image } from 'astro:assets';
-import myImage from "../src/assets/images/eye.svg"; 
+import myImage from "../src/assets/images/ui/form/eye.svg"; 
 ---
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ import myImage from "../src/assets/images/eye.svg";
                     <img
                         alt="Eye Icon"
                         title="Eye Icon"
-                        src="../src/assets/images/eye.svg"
+                        src="../src/assets/images/ui/form/eye.svg"
                         class="input__icon"
                     >
                 </div>
@@ -168,9 +168,9 @@ inputIcon.addEventListener("click", (e) => {
     inputIcon.setAttribute(
         'src', 
         input.getAttribute('type') === 'password' ?
-        '../src/assets/images/eye-off.svg'
+        '../src/assets/images/ui/form/eye-off.svg'
           :
-        '../src/assets/images/eye.svg'
+        '../src/assets/images/ui/form/eye.svg'
     );
 
     input.setAttribute(
