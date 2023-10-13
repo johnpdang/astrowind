@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Social Buttons</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <span class="background">
+            <span class="social-media-buttons">
+                <span class="social-media-button">
+                    <img
+                        alt="Instagram"
+                        src="../src/assets/images/social/icons/instagram.svg"
+                    />
+                </span>
+                <span class="social-media-button">
+                    <img
+                        alt="Twitter"
+                        src="../src/assets/images/social/icons/twitter.svg"
+                    />
+                </span>
+                <span class="social-media-button">
+                    <img
+                        alt="Youtube"
+                        src="../src/assets/images/social/icons/youtube.svg"
+                    />
+                </span>
+                <span class="social-media-button">
+                    <img
+                        alt="LinkedIn"
+                        src="../src/assets/images/social/icons/linkedin.svg"
+                    />
+                </span>
+            </span>
+        </span>
+    </body>
+</html>
+
+<style>
+    :root {
+    --background: #2C2C2C;
+    --linkedin: #0A66C2;
+    --youtube: #e52d27;
+    --twitter: #1D9BF0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+
+.background {
+    background-color: var(--background);
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.social-media-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.social-media-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    outline: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: grid;
+    place-items: center;
+}
+
+.social-media-button:hover {
+    outline-offset: 3px;
+    transition: all 0.3s;
+}
+
+.social-media-button img {
+    transition: all 0.3s;
+}
+
+.social-media-button:hover img {
+    transform: scale(1.15);
+}
+
+.social-media-button:hover:nth-child(1) {
+    background:  radial-gradient(
+        circle at 30% 107%, #fdf497 0%, 
+        #fdf497 5%, #fd5949 45%,
+        #d6249f 60%,#285AEB 90%
+    ); 
+}
+
+.social-media-button:hover:nth-child(2) {
+    background-color: var(--twitter);
+}
+
+.social-media-button:hover:nth-child(3) {
+    background-color: var(--youtube);
+}
+
+.social-media-button:hover:nth-child(4) {
+    background-color: var(--linkedin);
+}
+</style>
