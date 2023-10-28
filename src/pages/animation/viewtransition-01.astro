@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animation</title>
+        <meta 
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+              <a href="/page1.html" class="active">Page 1</a>
+              <a href="/page2.html">Page 2</a>
+            </nav>
+        
+            <section class="page1">
+              <div class="card">
+                <div class="box box1">
+                  <h1>Box 1</h1>
+                </div>
+                <a target="_blank" href="https://bejamas.io/blog/what-is-view-transitions-api/">Check out my article on view transitions on the Bejamas blog!</a> Lorem ipsum dolor sit amet consectetur adipisicing elit. At ipsa excepturi, labore quia natus tempore ad unde necessitatibus, dolorem error mollitia praesentium dicta, doloremque id nihil vero quam eos? Sed eos tempore nostrum, quasi accusamus fuga inventore minima ab, culpa nihil facilis mollitia totam voluptates esse omnis quisquam possimus rerum tempora deleniti eveniet odit odio porro. Officia, obcaecati harum iure ducimus aspernatur magnam tempora eveniet adipisci, ipsa cum excepturi perspiciatis. Tenetur voluptate rem aliquid illum! Facilis velit mollitia maiores blanditiis ipsum, voluptates dolorem eum pariatur obcaecati, cumque deserunt odit vero ut. Laudantium, delectus? Corporis debitis iste recusandae facilis numquam laborum.
+              </div>
+            </section>
+        
+            <section class="page2">
+              <div class="card">
+                <div class="box box2">
+                  <h1>Box 2</h1>
+                </div>
+                <a target="_blank" href="https://bejamas.io/blog/what-is-view-transitions-api/">It has many videos and demos!</a>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. At ipsa excepturi, labore quia natus tempore ad unde necessitatibus, dolorem error mollitia praesentium dicta, doloremque id nihil vero quam eos? Sed eos tempore nostrum, quasi accusamus fuga inventore minima ab, culpa nihil facilis mollitia totam voluptates esse omnis quisquam possimus rerum tempora deleniti eveniet odit odio porro. Officia, obcaecati harum iure ducimus aspernatur magnam tempora eveniet adipisci, ipsa cum excepturi perspiciatis. Tenetur voluptate rem aliquid illum! Facilis velit mollitia maiores blanditiis ipsum, voluptates dolorem eum pariatur obcaecati, cumque deserunt odit vero ut. Laudantium, delectus? Corporis debitis iste recusandae facilis numquam laborum.
+              </div>      
+            </section>
+          </div>
+    </body>
+</html>
+
+<style>
+.box1 {
+  width: 10rem;
+  view-transition-name: box;
+}
+
+.box2 {
+  float: none;
+  width: 100%;
+  view-transition-name: box;
+}
+
+
+
+
+
+
+:root {
+  --color-primary: #da3654;
+  --color-text: #000;
+  --color-text-2: #3c4856c2;
+}
+
+@font-face {
+  font-family: 'Recoleta';
+  src: url('https://bejamas.io/fonts/recoleta/Recoleta-SemiBold--subset.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('https://bejamas.io/fonts/p-vf.woff2')
+    format('woff2');
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html *,
+html *::after,
+html *::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font: 100%/1.6 'Poppins', sans-serif;
+  background-color: #1b1b1b;
+}
+
+:is(h1, h2) {
+  font-family: 'Recoleta', 'Poppins';
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.container {
+  max-width: min(90vw, 42rem);
+  margin-inline: auto;
+}
+
+nav {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  
+  & a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.active {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+
+.page2 {
+  display: none;
+}
+
+.card {
+  color: #fff5;
+  margin: 5rem auto;
+}
+
+.box {
+  color: #fff;  
+  padding: 2rem;
+  border-radius: 4px;
+  float: left;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box1 {
+  background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+}
+
+.box2 {
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+}
+
+a {
+  color: #ff7dab;
+  text-decoration: none;
+}
+
+.page2 a {
+  color: #6a85b6;
+}
+</style>
+
+<script>
+const nav1 = document.querySelector('nav a:first-child');
+const nav2 = document.querySelector('nav a:nth-child(2)');
+const page1 = document.querySelector('.page1');
+const page2 = document.querySelector('.page2');
+
+nav1.addEventListener('click', (event) => {
+  event.preventDefault();
+  document.startViewTransition(() => {
+    page2.style.display = 'none';
+    page1.style.display = 'block';
+    nav2.classList.remove('active');
+    nav1.classList.add('active');
+  });
+})
+
+nav2.addEventListener('click', (event) => {
+  event.preventDefault();
+  document.startViewTransition(() => {
+    page1.style.display = 'none';
+    page2.style.display = 'block';
+    nav1.classList.remove('active');
+    nav2.classList.add('active');        
+  });      
+})    
+</script>
