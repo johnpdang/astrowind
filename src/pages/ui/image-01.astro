@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image</title>
+  </head>
+  <body>
+        <section id="main">
+          <div class="image"></div>
+        </section>      
+  </body>
+</html>
+
+
+
+
+<style>
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+  background: #22232e;
+}
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+#main {
+  width: 100%;
+  min-height: 100vh;
+  background: #22232e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image{
+  background-image: url(https://omjsblog.files.wordpress.com/2023/11/1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  position: relative;
+}
+.image::before{
+  content: '';
+  position: absolute;
+  top: 102%;
+  left: 0;
+  width: 350px;
+  height: 200px;
+  background-image: url(https://omjsblog.files.wordpress.com/2023/11/1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleY(-1);
+  opacity: 0.2;
+}
+.image::after{
+  content: '';
+  position: absolute;
+  top: 102%;
+  left: 0;
+  width: 350px;
+  height: 200px;
+  background-image: linear-gradient(transparent, #22232e 50%);
+}
+</style>
+
+<script>
+
+</script>
