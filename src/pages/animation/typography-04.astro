@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p class="animated-title" aria-label="In space no one can hear you scream."></p>
+
+        <button onclick="replay()" class="button-replay">
+          Replay
+        </button>
+    </body>
+</html>
+
+<style>
+// Increase animation delay. The higher the number is, the slower the animation is
+$speed: 10;
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.animated-title { 
+  color: white;
+  font-size: 48px;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  animation: textGlitch 3s ease-in-out infinite alternate;
+}
+
+.animated-title {
+  span {
+    display: inline-block;
+    min-width: 1rem;
+  }
+  
+  .animate {
+    @for $i from 1 through 100 {
+      &:nth-child(3n+#{$i}){
+        span {
+          opacity: 0;
+          transform: translateY(2px);
+          animation: displayLetter .5s ease-in-out .5s forwards alternate;
+          letter-spacing: 1px;
+
+          @for $i from 1 through 100 {
+            &:nth-child(3n+#{$i}){
+              animation-delay: (random($speed) / 10) * 1s
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.animated-word {
+  opacity: 0;
+}
+
+@keyframes displayLetter {
+	0% {
+    transform: translateY(2px);
+    color: white;
+    opacity: 0;
+	}
+  10% {
+    opacity: 1;
+    color: limegreen;
+  }
+  20% {
+    opacity: 0;
+    color: white;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    color: darkgreen;
+    transform: translateY(1px);
+  }
+  60% {
+    opacity: 1;
+    color: white;
+    transform: translateY(1px);
+  }
+	100% {
+    transform: translateY(0);
+    color: white;
+    opacity: 1;
+	}
+}
+
+@keyframes textGlitch {
+  0% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+	95% {
+    opacity: 0.1;
+  }
+  96% {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  97% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+// Demo Only Styling
+body {
+  background-color: black;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-replay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: solid 2px white;
+  outline: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+</style>
+
+<script>
+let animationContainer = document.querySelector('.animated-title');
+let textData = animationContainer.getAttribute('aria-label');
+
+function splitWords() {
+  let splitedText = textData.split(' ');
+  
+  splitedText.join('& &').split('&').forEach(function(e){
+    let span = document.createElement('span');
+    span.classList.add('animated-word');
+    span.setAttribute('data-text', e); 
+    animationContainer.appendChild(span);
+  });
+  splitLetters();
+}
+splitWords()
+
+
+function splitLetters() {
+  let animatedWords = document.querySelectorAll('.animated-word');
+  animatedWords.forEach(function(e, i){
+    e.getAttribute('data-text').split('').forEach(function(f, j) {
+      f = f == ' ' ? '&#32;' : f;
+      let span = document.createElement('span');
+      span.classList.add('animated-element');
+      span.setAttribute('aria-hidden', 'true'); 
+      span.innerHTML = f;
+      e.appendChild(span);
+    });
+    animate(e, i);
+  })
+}
+
+function animate(e, i) {
+  let wordCount = e.getAttribute('data-text').length;
+  e.style.opacity = 1;
+  e.classList.add('animate');
+}
+
+// Replay Button - For Demo purpose only
+function replay() {
+  let animatedWords = document.querySelectorAll('.animated-word');
+  animatedWords.forEach(function(e, i){
+    e.classList.remove('animate');
+    e.style.opacity = 0;
+    setTimeout(() => {
+      animate(e, i);
+    }, 500);
+  })
+}
+
+</script>
