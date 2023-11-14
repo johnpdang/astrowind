@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+  </head>
+  <body>
+    <div class="compare">
+        <section class="before">
+          <img src="https://assets.codepen.io/2585/Runner.svg" alt="" />
+        </section>
+        <section class="after">
+          <img src="https://assets.codepen.io/2585/Roboto.svg" alt="" />
+        </section>
+        <input type="range" id="range">
+      </div>
+  </body>
+</html>
+
+<style>
+@layer demo {
+  .compare {
+    display: grid;
+    
+    > * {
+      grid-area: 1 / 1;
+    }
+    
+    > section {
+      display: grid;
+      place-content: center;
+    }
+  }
+  
+  .before {
+    clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+  }
+  
+  .after {
+    clip-path: inset(0 0 0 var(--pos, 50%));
+  }
+  
+  input[type="range"] {
+    z-index: 1;
+    appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 4px;
+      height: 100dvh;
+      background-color: CanvasText;
+    }
+    
+    &::-moz-range-thumb {
+      appearance: none;
+      width: 4px;
+      height: 100dvh;
+      background-color: CanvasText;
+    }
+  }
+}
+
+@layer demo.support {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html {
+    block-size: 100%;
+    color-scheme: dark light;
+  }
+
+  body {
+    min-block-size: 100%;
+    font-family: system-ui, sans-serif;
+    display: grid;
+  }
+  
+  img {
+    max-block-size: 80dvh;
+  }
+}
+</style>
+
+<script>
+range.oninput = () =>
+  document.body.style.setProperty('--pos', range.value + '%')
+</script>
