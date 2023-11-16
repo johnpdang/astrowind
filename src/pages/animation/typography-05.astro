@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <p aria-label="Geist Sans">
+              <span aria-hidden="true">G</span><span aria-hidden="true">e</span><span aria-hidden="true">i</span><span aria-hidden="true">s</span><span aria-hidden="true">t</span><span aria-hidden="true"> </span><span aria-hidden="true">S</span><span aria-hidden="true">a</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span>
+            </p>
+          </div>
+    </body>
+</html>
+
+<style>
+@font-face {
+  font-family: "Geist";
+  src: url("https://pham.codes/d/GeistVF.woff2") format("woff2");
+}
+
+p {
+  font-family: "Geist";
+  font-size: 128px;
+  margin: 0;
+
+  background-color: white;
+  background-image: linear-gradient(0deg, #111 70%, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  filter: drop-shadow();
+
+  --wght-min: 32;
+  --wght-max: 240;
+}
+
+p > span {
+  animation: breath 1.5s alternate cubic-bezier(0.37, 0, 0.63, 1);
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes breath {
+  0% {
+    font-variation-settings: "wght" var(--wght-min);
+  }
+  100% {
+    font-variation-settings: "wght" var(--wght-max);
+  }
+}
+
+/* Setup */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  background: white;
+  color: #111;
+}
+
+</style>
+
+<script>
+const spans = document.querySelectorAll('p span');
+
+const numLetters = spans.length;
+
+spans.forEach(function(span, i) {
+    const mappedIndex = i - (numLetters / 2)
+    span.style.animationDelay = (mappedIndex * 0.25) + 's';
+});
+</script>
