@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tooltip</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="tooltip top" style="--c: #79bd9a;">This is a simple Tooltip with a solid coloration and without border radius </div>
+        <div class="tooltip right" style="--c: #8a9b0f;">This is a simple Tooltip with a solid coloration and without border radius </div>
+        <div class="tooltip left" style="--c: #eb6841;">This is a simple Tooltip with a solid coloration and without border radius </div>
+        <div class="tooltip bottom">This is a simple Tooltip with a solid coloration and without border radius </div>
+    </body>
+</html>
+
+<style>
+.tooltip {
+  /* triangle dimension */
+  --b: 2em; /* base */
+  --h: 1em; /* height*/
+
+  border-image: fill 0//var(--h)
+    conic-gradient(var(--c,#CC333F) 0 0); 
+}
+.bottom {
+  clip-path: 
+    polygon(0 100%,0 0,100% 0,100% 100%,
+      calc(50% + var(--b)/2) 100%,
+      50% calc(100% + var(--h)),
+      calc(50% - var(--b)/2) 100%);
+}
+.top {
+  clip-path: 
+    polygon(0 0,0 100%,100% 100%,100% 0,
+      calc(50% + var(--b)/2) 0,
+      50% calc(-1*var(--h)),
+      calc(50% - var(--b)/2) 0);
+}
+.right {
+  clip-path: 
+    polygon(100% 100%,0 100%,0 0,100% 0,
+      100% calc(50% - var(--b)/2),
+      calc(100% + var(--h)) 50%,
+      100% calc(50% + var(--b)/2));
+}
+.left {
+  clip-path: 
+    polygon(0 100%,100% 100%,100% 0,0 0,
+      0 calc(50% - var(--b)/2),
+      calc(-1*var(--h)) 50%,
+      0 calc(50% + var(--b)/2));
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  grid-template-columns: auto auto;
+  gap: 30px;
+  text-align: center;
+  background: #f2f2f2;
+}
+.tooltip {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: sans-serif;
+  padding: 1em;
+  max-width: 25ch;
+}
+
+</style>
