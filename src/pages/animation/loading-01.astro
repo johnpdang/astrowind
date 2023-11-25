@@ -1,0 +1,86 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading</title>
+    <link href="https://unpkg.com/splitting/dist/splitting.css" rel="stylesheet">
+    <link href="https://unpkg.com/splitting/dist/splitting-cells.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+        <p data-splitting>Loading ....</p>
+        <div class="wrap">
+            <div class="box" data-splitting="cells" data-columns="10" data-rows="1" data-image="true">
+            </div>
+        </div>
+
+        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <script is:inline src="https://unpkg.com/splitting/dist/splitting.min.js"></script>       
+    </main>
+  </body>
+</html>
+
+<style>
+.box {
+	width: 10rem;
+	height: 1rem;
+	margin-block-start: 0.5rem;
+	background: dodgerblue;
+}
+
+.wrap {
+	outline: 1px solid #efefef;
+	outline-offset: 0.25rem;
+}
+p {
+	opacity: 0.5;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	background: #080808;
+	font-family: "Open Sans", sans-serif;
+	color: #fff;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+</style>
+
+<script>
+Splitting();
+
+var tl = gsap.timeline({ repeat: -1, repeatDelay: 0.75 });
+tl
+	.from(".box .cell", {
+		scale: 0,
+		transformOrigin: "center",
+		x: "1.5rem",
+		duration: 0.25,
+		ease: "circ.out",
+		stagger: {
+			amount: 3,
+			from: "start"
+		}
+	})
+	.to(
+		".box .cell",
+		{
+			scale: 0,
+			xPercent: -900,
+			duration: 0.5,
+			stagger: { amount: 0.75, from: "start" }
+		},
+		"+=0.5"
+	);
+
+</script>
