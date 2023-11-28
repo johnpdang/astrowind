@@ -1,0 +1,94 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover</title>
+  </head>
+  <body>
+    <main>
+        <h2>Beauty</h2>
+        <h2>and the beast</h2>
+        <img src="https://assets.codepen.io/4787486/rainforest-destruction.jpg" alt="Remains of burnt and felled trees in a rainforest" />
+    </main>
+  </body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,400;1,500&display=swap');
+
+main {
+	display: grid;
+	place-items: center;
+	width: 650px;
+	height: 450px;
+	background-image: url("https://assets.codepen.io/4787486/rainforest.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 0.5rem;
+	box-shadow: 1rem 1rem 5rem #373e12;
+	transition: 2s ease;
+	overflow: hidden;
+}
+main > * {
+	grid-area: 1 / 1;
+}
+img {
+	width: 650px;
+	height: 450px;
+	clip-path: polygon(47% 20%, 53% 20%, 53% 80%, 47% 80%);
+	transition: 2s ease;
+}
+main:hover img {
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+h2 {
+	font-size: 4.5rem;
+	color: #C4D570;
+	transition: 3s ease;
+	font-family: 'Aref Ruqaa Ink', serif;
+	z-index: 10;
+}
+h2:nth-child(2) {
+	font-family: 'IBM Plex Mono', monospace;
+	font-weight: 400;
+	opacity: 0;
+}
+main:hover h2:nth-child(1) {
+	opacity: 0;
+}
+main:hover h2:nth-child(2) {
+	color: #999;
+	transition-delay: 1.5s;
+	opacity: 1;
+}
+
+body:hover {
+	background: #b3b3b3;
+}
+body:hover main {
+	box-shadow: 1rem 1rem 5rem #666;
+}
+
+*, * + * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	background: #C4D570;
+	transition: 2s ease;
+}
+
+
+</style>
