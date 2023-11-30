@@ -1,0 +1,44 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Without Overlay</h1>
+      </div>
+      
+      <div class="container overlay">
+        <h1>with Overlay</h1>
+      </div>   
+  </body>
+</html>
+
+
+<style>
+.overlay {
+  border-image: fill 0 linear-gradient(#0003,#000); /* your gradient here */
+}
+
+
+/* Let's suppose you cannot modify the background property
+and you cannot use pseudo-elements */
+.container {
+  height: 250px;
+  margin: 10px max(10px,50% - 400px);
+  background: url(https://picsum.photos/id/118/900/600) center/cover;
+  display: grid;
+  place-items:center;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+
+</style>
