@@ -1,0 +1,84 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+  </head>
+  <body>
+    <nav>
+        <h2>Revealed On Scroll</h2>
+      </nav>
+      
+      <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, repellat atque soluta sequi quae, eaque rem facere necessitatibus vel minus quia excepturi fugit ipsam totam quas eum sed accusamus ut?</p>
+        <p>Eaque nobis sequi sint magnam saepe voluptatum velit quam. Sapiente aspernatur repellendus, eius adipisci, rem dolor nobis excepturi consequatur libero vitae dicta officiis sunt ratione. Nemo hic ipsum aperiam aliquam? Eaque nobis sequi sint magnam saepe voluptatum velit quam. Sapiente aspernatur repellendus, eius adipisci, rem dolor nobis excepturi consequatur libero vitae dicta officiis sunt ratione. Nemo hic ipsum aperiam aliquam? Eaque nobis sequi sint magnam saepe voluptatum velit quam. Sapiente aspernatur repellendus, eius adipisci, rem dolor nobis excepturi consequatur libero vitae dicta officiis sunt ratione. Nemo hic ipsum aperiam aliquam?</p>
+        <p>Aliquam, aperiam distinctio. Facilis quia totam tempore odio natus minus assumenda iste ab error consequatur, expedita iure et magnam nisi voluptas necessitatibus ipsam, maiores eligendi blanditiis? Temporibus maiores voluptates blanditiis?</p>
+        <p>Sint nisi nam aut labore sequi laboriosam voluptates earum debitis, provident minima molestias fugit quidem totam autem dolor! Molestias sequi beatae aut. Fugit et minus velit culpa quasi eos in!</p>
+        <p>Nesciunt mollitia doloribus quaerat ratione aliquid quae odit ut sint eaque fugit placeat at, molestiae quo ullam, temporibus dolor. Officia ratione iusto quas dolorum enim eius porro voluptatum veritatis accusantium!</p>
+      </main>
+  </body>
+</html>
+
+<style>
+@supports (animation-timeline: scroll()) {
+  @keyframes color-in {
+    to { background-color: hsl(200 10% 20%) }
+  }
+  
+  @keyframes shadow-in {
+    to { box-shadow: 0 10px 10px #0003 }
+  }
+  
+  nav {
+    animation: 
+      color-in linear both, 
+      shadow-in linear both;
+    animation-timeline: scroll();
+    animation-range: 0% 10svh;
+  }
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface);
+  padding: 2rem;
+}
+
+html {
+  --surface: hsl(200 10% 10%);
+  --text: hsl(200 5% 80%);
+  
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+body {
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  margin: 0;
+  padding-block-end: 20vh;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  max-inline-size: 50ch;
+  margin-inline: auto;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 2;
+}
+</style>
