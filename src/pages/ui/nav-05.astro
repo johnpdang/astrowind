@@ -1,0 +1,173 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nav</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="bg-gradient-to-tr from-indigo-500 to-pink-500 w-screen h-screen flex">
+        <div class="bg-black/30 w-96 m-auto flex justify-stretch rounded-md shadow-lg backdrop-blur">
+            <a href="#" class="text-slate-200 hover:text-white hover:bg-black/20 w-1/4 py-3 flex flex-col items-center hover:scale-110 rounded-md transition-all">
+                <i class="fa-solid fa-house"></i>
+                <small>Home</small>
+            </a>
+            <a href="#" class="text-slate-200 hover:text-white hover:bg-black/20 w-1/4 py-3 flex flex-col items-center hover:scale-110 rounded-md transition-all">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <small>Search</small>
+            </a>
+            <a href="#" class="text-slate-200 hover:text-white hover:bg-black/20 w-1/4 py-3 flex flex-col items-center hover:scale-110 rounded-md transition-all">
+                <i class="fa-regular fa-user"></i>
+                <small>Followers</small>
+            </a>
+            <a href="#" class="text-slate-200 hover:text-white hover:bg-black/20 w-1/4 py-3 flex flex-col items-center hover:scale-110 rounded-md transition-all">
+                <i class="fa-solid fa-gear"></i>
+                <small>Settings</small>
+            </a>
+        </div>
+    </div>
+
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    
+  </body>
+</html>
+
+<style>
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: hsl(0 0% 6%);
+  }
+  
+  button {
+    width: 280px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    scale: 1;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  
+  button:is(:hover, :focus-visible) {
+    background: hsl(0 0% 16%);
+  }
+  
+  button:is(:focus-visible) {
+    outline-color: hsl(320 80% 50% / 0.5);
+    outline-offset: 1rem;
+    outline-width: 4px;
+  }
+  
+  button svg:first-of-type {
+    width: 65%;
+  }
+  
+  button rect {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    fill: hsl(0 0% 98%);
+  }
+  .unset rect {
+    transform-box: unset;
+  }
+  [aria-pressed=true] rect { 
+    transition: translate 0.2s, rotate 0.2s 0.3s;
+  }
+  rect {
+    transition: rotate 0.2s 0s, translate 0.2s 0.2s;
+  }
+  
+  [aria-pressed=true] rect:nth-of-type(1) {
+    translate: 0 333%;
+    rotate: -45deg;
+  }
+  [aria-pressed=true] rect:nth-of-type(2) {
+    rotate: 45deg;
+  }
+  [aria-pressed=true] rect:nth-of-type(3) {
+    translate: 0 -333%;
+    rotate: 45deg;
+  }
+  [aria-pressed=true] svg {
+    rotate: 90deg;
+    transition: rotate 1s 0.4s;
+  }
+  
+  @supports (--custom: linear()) {
+    :root {
+      --elastic-out: linear(
+        0, 0.2178 2.1%, 1.1144 8.49%,
+        1.2959 10.7%, 1.3463 11.81%,
+        1.3705 12.94%, 1.3726, 1.3643 14.48%,
+        1.3151 16.2%, 1.0317 21.81%,
+        0.941 24.01%, 0.8912 25.91%,
+        0.8694 27.84%, 0.8698 29.21%,
+        0.8824 30.71%, 1.0122 38.33%, 1.0357,
+        1.046 42.71%, 1.0416 45.7%,
+        0.9961 53.26%, 0.9839 57.54%,
+        0.9853 60.71%, 1.0012 68.14%,
+        1.0056 72.24%, 0.9981 86.66%, 1
+      );
+      --elastic-in-out: linear(
+        0, 0.0009 8.51%, -0.0047 19.22%,
+        0.0016 22.39%, 0.023 27.81%,
+        0.0237 30.08%, 0.0144 31.81%,
+        -0.0051 33.48%, -0.1116 39.25%,
+        -0.1181 40.59%, -0.1058 41.79%, -0.0455,
+        0.0701 45.34%, 0.9702 55.19%,
+        1.0696 56.97%, 1.0987 57.88%,
+        1.1146 58.82%, 1.1181 59.83%,
+        1.1092 60.95%, 1.0057 66.48%,
+        0.986 68.14%, 0.9765 69.84%,
+        0.9769 72.16%, 0.9984 77.61%,
+        1.0047 80.79%, 0.9991 91.48%, 1
+      );
+    }
+    [aria-pressed=true] svg {
+      transition-timing-function: var(--elastic-out);
+    }
+  }
+  
+  .controls {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+    color: hsl(0 0% 98%);
+    accent-color: hsl(0 0% 100%);
+  }
+</style>
+
+<script>
+    const TOGGLE = document.querySelector('button')
+
+const HANDLE_TOGGLE = () => {
+  TOGGLE.setAttribute('aria-pressed', TOGGLE.matches('[aria-pressed=true]') ? false : true)
+}
+
+TOGGLE.addEventListener('click', HANDLE_TOGGLE)
+
+const INPUT = document.querySelector('input')
+
+const APPLY_TRANSFORM_BOX = () => {
+  TOGGLE.classList.toggle('unset')
+}
+
+INPUT.addEventListener('change', APPLY_TRANSFORM_BOX)
+</script>
