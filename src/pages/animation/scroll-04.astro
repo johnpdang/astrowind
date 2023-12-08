@@ -1,0 +1,574 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <link href='//fonts.googleapis.com/css?family=Signika+Negative:300,400,600' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="viewport" class="bkg-layer">
+        <div id="content" class="bkg-content-holder">
+          <div class="content-holder">
+            <header class="header">
+              <div class="header-container flex flex-space-between-center">
+                <div class="header-logo">
+                  <img
+                    src="https://yunicorn.vc/assets/logos/yunicorn-dark.svg"
+                    alt="Yunicorn Logo Dark Colored"
+                  />
+                </div>
+                <div class="header-nav">
+                  <ul class="main-nav-list 
+                             flex-space-between link-spacer">
+                    <li>
+                      <a href="#" class="main-nav-link link-cta-secondary"
+                        >About</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="main-nav-link link-cta">Let's Talk</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </header>
+            <div class="content-top position-relative">
+              <div class="content-top-content">
+                <div class="content-top-asset position-relative">
+                  <picture class="flex">
+                    <img
+                      src="https://yunicorn.vc/assets/home/bg/home-bg-hd-20.jpg"
+                      alt="Mytological Creatures and Symbolic Imagery"
+                      class="body-bkg-img"
+                    />
+                  </picture>
+                  <div class="content-body-fade"></div>
+                </div>
+              </div>
+              <div
+                class="content-lines position-absolute flex flex-space-between-stretch"
+              >
+                <div class="content-line content-line-0"></div>
+                <div class="content-line content-line-1"></div>
+                <div class="content-line content-line-2"></div>
+                <div class="content-line content-line-3"></div>
+              </div>
+              <section
+                class="section-hero flex flex-center-start position-relative"
+              >
+                <div class="container flex flex-center-center-column">
+                  <div class="hero-title position-relative">
+                    <h1 class="hero-heading">
+                      Industry
+                      <span class="outsider">Leading</span><br />
+                      Performance <br />
+                      Branding
+                    </h1>
+                  </div>
+                  <div class="hero-bg">
+                    <div class="hero-bg-img">
+                      <div class="hero-bg-pg pg-1 position-absolute">
+                        <img
+                          src="	https://yunicorn.vc/assets/home/hero-pigeon-1.png"
+                          alt="Flying Pigeo"
+                          class="img-fluid pigeons"
+                        />
+                      </div>
+                      <div class="hero-bg-pg pg-2 position-absolute">
+                        <img
+                          src="	https://yunicorn.vc/assets/home/hero-pigeon-2.png"
+                          alt="Flying Pigeo"
+                          class="img-fluid pigeons"
+                        />
+                      </div>
+                      <div class="hero-bg-pg pg-3 position-absolute">
+                        <img
+                          src="	https://yunicorn.vc/assets/home/hero-pigeon-3.png"
+                          alt="Flying Pigeon"
+                          class="img-fluid pigeons"
+                        />
+                      </div>
+                      <div class="hero-bg-pg pg-4 position-absolute">
+                        <img
+                          src="	https://yunicorn.vc/assets/home/hero-pigeon-4.png"
+                          alt="Flying Pigeon"
+                          class="img-fluid pigeons"
+                        />
+                      </div>
+                      <img
+                        src="https://yunicorn.vc/assets/home/hero-img.png"
+                        alt="Hero Image of a Greek Archaic Statue"
+                        class="hero-bg-img-main img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <div class="hero-text">
+                    Achieve unprecedented revenue growth through a unique
+                    combination of Branding & performance marketing experience.
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script is:inline src="https://unpkg.co/gsap@3/dist/gsap.min.js?v=3.10.0"></script>
+      <script is:inline src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+      <script is:inline src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
+  </body>
+</html>
+
+<style>
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  line-height: 3.2rem;
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  overscroll-behavior: none;
+  touch-action: pan-x;
+}
+
+/* General styling */
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.flex-space-between-center {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-space-between-stretch {
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.flex-center-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-start {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.flex-center-center-column {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 112rem;
+  /* max-width: 124rem; */
+  /* margin: 0 auto; */
+  width: 100%;
+  align-items: start;
+  padding-top: 1rem;
+}
+
+.link-cta {
+  background-color: #63b5e5;
+  padding: 1rem 4rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.outsider {
+  color: #63b5e5;
+}
+
+.highlight {
+  font-size: 2rem;
+  /* text-decoration: underline; */
+  font-weight: 900;
+  border-bottom: 2px solid #000;
+}
+/* End of General Styling */
+
+
+/* Content Related Styling */
+
+/* header */
+.header {
+  position: absolute;
+  top: 8rem;
+  z-index: 9999;
+  width: 100%;
+}
+.header-container {
+  /* padding: 0 12rem; */
+  max-width: 112rem;
+  margin: 0 auto;
+  /* margin-top: 4rem; */
+}
+
+.main-nav-list {
+  list-style: none;
+}
+
+.main-nav-link:where(:link, :visited) {
+  text-decoration: none;
+  text-transform: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 900;
+  /* background-color: #000; */
+}
+
+.link-spacer {
+  gap: 4rem;
+}
+
+/* Body Top */
+.bkg-content-holder {
+  /* width: 100%; */
+/*   height: 100%; */
+  /* transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); */
+}
+.content-holder {
+/*   height: 100%; */
+  width: 100%;
+  position: relative;
+  opacity: 1;
+}
+
+.content-top,
+.content-body-fade {
+  bottom: 0;
+  left: 0;
+}
+
+.content-top {
+  height: 100%;
+}
+
+.content-top-content {
+  width: 100%;
+/*   height: 100%; */
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.content-top-asset picture {
+  width: auto;
+  height: 100%;
+  opacity: 0.1;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content-top-asset {
+  width: auto;
+  max-width: none;
+  height: 100%;
+}
+
+.content-lines {
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%);
+  max-width: 115rem;
+  z-index: -1;
+}
+
+.content-line {
+  height: 100%;
+  border-right: 1px solid #d2d2d2;
+  width: 0;
+}
+
+.content-top .content-body-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 41rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%);
+}
+
+.body-bkg-img {
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+}
+
+/* hero */
+.section-hero {
+  /* display: flex; */
+  width: 100%;
+  min-height: 100vh;
+  padding: 14rem 0 12rem;
+  overflow: hidden;
+}
+
+.hero-title {
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 900;
+  font-size: 3rem;
+  margin-bottom: 14rem;
+  width: 100%;
+}
+
+.hero-title::before {
+  display: block;
+  content: "";
+  border-top: 0.6rem solid #000;
+  width: 13rem;
+  margin-bottom: 2rem;
+}
+
+.hero-heading {
+  line-height: 5rem;
+  z-index: 12;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-bg-img {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: min(53.125%, 1020px);
+}
+
+.hero-bg-img-main {
+  transform: translate(0, 1.3rem);
+}
+
+/* hero bg-pigeons */
+.hero-bg-pg {
+  max-width: 11%;
+  z-index: 1;
+}
+
+/*  Individual Hero Pigeons*/
+.pg-1 {
+  top: 11%;
+  left: 27%;
+}
+
+.pg-2 {
+  top: 32%;
+  left: 17%;
+  max-width: 7%;
+}
+
+.pg-3 {
+  top: 67%;
+  left: 42%;
+  max-width: 16%;
+}
+
+.pg-4 {
+  top: 49%;
+  right: 6%;
+  max-width: 12%;
+}
+
+.hero-text {
+  max-width: min(41rem, 100%);
+  align-self: flex-end;
+  line-height: 1.5;
+  font-size: 2rem;
+}
+
+
+/* End of content related styling */
+
+
+
+
+/* Smooth Scroll Css */
+
+#viewport {
+/*   overflow: hidden;
+  position: fixed;
+  height: 100%; */
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#content {
+  overflow: visible;
+  width: 100%;
+  /* set a height because the contents are position: absolute, thus natively there's no height */
+  height: 2400px;
+}
+
+</style>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+
+// scroll els
+const heroHeading = document.querySelector(".hero-heading");
+const heroText = document.querySelector(".hero-text");
+ScrollSmoother.create({
+  content: "#content",
+  wrapper: "#viewport",
+  smooth: 2
+})
+
+/* 
+Setup: wrap your content <div> in another <div> that will serve as the viewport.
+Call this function FIRST (before you create your ScrollTriggers); it sets the 
+default "scroller" for you (otherwise it'd be the window/body, but it should be 
+the content <div>) 
+*/
+//smoothScroll("#content");
+
+// pin each box for 300px when they hit the top
+
+let scrollEls = document.querySelector(".section-hero");
+
+let scl = ScrollTrigger.create({
+  trigger: scrollEls,
+  pin: ".hero-bg-img",
+  //   start: "-140px top",
+  start: "-140px top",
+  end: "bottom top", //document.querySelector(".section-hero").clientHeight,
+  markers: true,
+});
+
+
+
+
+// this is the helper function that sets it all up. Pass in the content <div> and then the wrapping viewport <div> (can be the elements or selector text). It also sets the default "scroller" to the content so you don't have to do that on all your ScrollTriggers.
+function smoothScroll(content, viewport, smoothness) {
+	content = gsap.utils.toArray(content)[0];
+	smoothness = smoothness || 1;
+
+	gsap.set(viewport || content.parentNode, {overflow: "hidden", position: "fixed", height: "100%", width: "100%", top: 0, left: 0, right: 0, bottom: 0});
+	gsap.set(content, {overflow: "visible", width: "100%"});
+
+	let getProp = gsap.getProperty(content),
+		setProp = gsap.quickSetter(content, "y", "px"),
+		setScroll = ScrollTrigger.getScrollFunc(window),
+		removeScroll = () => content.style.overflow = "visible",
+		killScrub = trigger => {
+			let scrub = trigger.getTween ? trigger.getTween() : gsap.getTweensOf(trigger.animation)[0]; // getTween() was added in 3.6.2
+			scrub && scrub.pause();
+			trigger.animation.progress(trigger.progress);
+		},
+		height, isProxyScrolling;
+
+	function refreshHeight() {
+		height = content.clientHeight;
+		content.style.overflow = "visible"
+		document.body.style.height = height + "px";
+    return height - document.documentElement.clientHeight;
+	}
+
+	ScrollTrigger.addEventListener("refresh", () => {
+		removeScroll();
+		requestAnimationFrame(removeScroll);
+	})
+	ScrollTrigger.defaults({scroller: content});
+	ScrollTrigger.prototype.update = p => p; // works around an issue in ScrollTrigger 3.6.1 and earlier (fixed in 3.6.2, so this line could be deleted if you're using 3.6.2 or later)
+
+	ScrollTrigger.scrollerProxy(content, {
+		scrollTop(value) {
+			if (arguments.length) {
+				isProxyScrolling = true; // otherwise, if snapping was applied (or anything that attempted to SET the scroll proxy's scroll position), we'd set the scroll here which would then (on the next tick) update the content tween/ScrollTrigger which would try to smoothly animate to that new value, thus the scrub tween would impede the progress. So we use this flag to respond accordingly in the ScrollTrigger's onUpdate and effectively force the scrub to its end immediately.
+				setProp(-value);
+				setScroll(value);
+				return;
+			}
+			return getProp("y");
+		},
+    scrollHeight: () => document.body.scrollHeight,
+		getBoundingClientRect() {
+			return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+		}
+	});
+
+	return ScrollTrigger.create({
+		animation: gsap.fromTo(content, {y:0}, {
+			y: () => document.documentElement.clientHeight - height,
+			ease: "none",
+			onUpdate: ScrollTrigger.update
+		}),
+		scroller: window,
+		invalidateOnRefresh: true,
+		start: 0,
+		end: refreshHeight,
+    refreshPriority: -999,
+		scrub: smoothness,
+		onUpdate: self => {
+			if (isProxyScrolling) {
+				killScrub(self);
+				isProxyScrolling = false;
+			}
+		},
+		onRefresh: killScrub // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
+	});
+}
+
+// for a horizontal version, see https://codepen.io/GreenSock/pen/rNmQPpa?editors=0010
+</script>
