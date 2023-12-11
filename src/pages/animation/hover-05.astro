@@ -1,0 +1,68 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover</title>
+  </head>
+  <body>
+    <img src="https://picsum.photos/id/64/300/300" alt="a random girl">
+  </body>
+</html>
+
+<style>
+@property --h {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+img {
+  --b: 15px; /* border width */
+  --g: 10px; /* gap */
+  --c: red;
+  
+  width: 250px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: calc(var(--b) + var(--g));
+  background: conic-gradient(from 180deg in oklch longer hue, red 0 0);
+  -webkit-mask:
+    radial-gradient(farthest-side,
+      #000  calc(100% - var(--b) - var(--g) - 1px),
+      #0000 calc(100% - var(--b) - var(--g)) 
+            calc(100% - var(--b)),
+      #000  calc(100% - var(--b) + 1px)),
+    conic-gradient(from 180deg,
+     #0000   calc(var(--p) - var(--h)),
+     #000  0 var(--p),
+     #0000,
+     #000  0 calc(var(--p) + var(--h)),
+     #0000 0),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask-composite: source-in,destination-over;
+          mask-composite: intersect,add;
+  --p: 0%;
+  transition: --h .5s linear,scale .5s;
+  cursor: pointer;
+}
+img:hover {
+  --h: 100%;
+  --p: 100%;
+  scale: 1.1;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #bad9d5;
+}
+
+</style>
