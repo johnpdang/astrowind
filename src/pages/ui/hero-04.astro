@@ -1,0 +1,424 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hero Section Sticky Slides - Open Props</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />        
+    </head>
+    <body>
+<!-- Main -->
+<main class="main">
+    <section class="article-list">
+      <div class="article-list-item" id="article-1">
+        <div class="article-list-item-inner">
+          <div class="article-list-item-inner-title">
+            <a class="article-list-item-inner-title-inner" href="" data-target="article-1"><span>“New&nbsp</span><span class="ht-outlined">Porsche&nbsp</span><span>911”</span></a>
+          </div>
+          <div class="article-list-item-inner-overlay"></div>
+          <img class="article-list-item-background rellax" data-rellax-speed="-4" data-rellax-percentage="0.5" src="https://images.unsplash.com/photo-1632077622353-daeef65ef114?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        </div>
+        <img class="article-list-item-background-blur" src="https://images.unsplash.com/photo-1632077622353-daeef65ef114?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+      </div>
+      <div class="article-list-item" id="article-2">
+        <div class="article-list-item-inner">
+          <div class="article-list-item-inner-title">
+            <a class="article-list-item-inner-title-inner" href="" data-target="article-2"><span>“The&nbsp</span><span class="ht-outlined">snow&nbsp</span><span>cafe”</span></a>
+          </div>
+          <div class="article-list-item-inner-overlay"></div>
+          <img class="article-list-item-background rellax" data-rellax-speed="-4" data-rellax-percentage="0.5" src="https://images.unsplash.com/photo-1613486073627-30fa244557bb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        </div>
+        <img class="article-list-item-background-blur" src="https://images.unsplash.com/photo-1613486073627-30fa244557bb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+      </div>
+      <div class="article-list-item" id="article-3">
+        <div class="article-list-item-inner">
+          <div class="article-list-item-inner-title">
+            <a class="article-list-item-inner-title-inner" href="" data-target="article-3"><span>“Flower&nbsp</span><span class="ht-outlined">things”</span></a>
+          </div>
+          <div class="article-list-item-inner-overlay"></div>
+          <img class="article-list-item-background rellax" data-rellax-speed="-4" data-rellax-percentage="0.5" src="https://images.unsplash.com/photo-1667818139461-7772a11554f9?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        </div>
+        <img class="article-list-item-background-blur" src="https://images.unsplash.com/photo-1667818139461-7772a11554f9?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+      </div>
+    </section>
+  </main>
+
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    </body>
+</html>
+
+
+<style lang="scss">
+/* Flexbox */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin flex-left-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+@mixin flex-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+@mixin flex-right-start {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+/* Columns */
+@mixin flex-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin flex-col-left {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@mixin flex-col-left-ns {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@mixin flex-col-right {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@mixin flex-col-right-ns {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@mixin flex-col-start-center {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+/* Spacings */
+@mixin flex-space-bet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@function hslac($color, $alpha) {
+  @if (type-of($color) == "color") {
+    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+  } @else {
+    @error "You didn't pass a color object";
+  }
+}
+/* Colors */
+$primary: hsl(353, 88%, 52%);
+$background: hsl(0, 42%, 97%);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+/* Sizes */
+$heading-large: clamp(2.8rem, 2.2399999999999998rem + 2.8vw, 5.6rem);
+$heading-medium: clamp(2rem, 1.68rem + 1.6vw, 3.6rem);
+$heading-small: clamp(1.8rem, 1.68rem + 0.59vw, 2.4rem);
+$paragraph: clamp(1rem, 0.978rem + 0.11vw, 1.11rem);
+$sidebar-buttons: 2.4rem;
+/* misc */
+$transition-main: 0.175, 0.685, 0.32;
+$transition-smooth: 0.175, 0.285, 0.32;
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700;1,6..96,800;1,6..96,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700;1,6..96,800;1,6..96,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700;1,6..96,800;1,6..96,900&family=Noto+Serif+Display:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+$font-main: "Poppins", sans-serif;
+$font-title: "Playfair Display", serif;
+$font-title-smooth: "Noto Serif Display", serif;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  color: hslac($black, 1);
+  font-family: $font-main;
+  background-color: hslac($background, 1);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+/* Font Size */
+h1 {
+  font-size: $heading-large;
+}
+h2 {
+  font-size: $heading-medium;
+}
+h3 {
+  font-size: $heading-small;
+}
+h4 {
+  font-size: calc($heading-small - 0.2rem);
+}
+h5 {
+  font-size: calc($heading-small - 0.4rem);
+}
+h6 {
+  font-size: calc($heading-small - 0.6rem);
+}
+/* Font Weight */
+h1,
+h2 {
+  font-weight: 900;
+}
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
+/* Paragraphs */
+p {
+  margin: 0;
+  font-size: $paragraph;
+}
+/* Links */
+a {
+  color: hslac($primary, 1);
+  font-size: $paragraph;
+  text-decoration: none;
+}
+a:visited {
+  color: hslac($primary, 0.5);
+}
+/* Global */
+.view-width {
+  width: calc(100% - 6em);
+  max-width: 1420px;
+}
+.no-margin {
+  margin: 0 !important;
+}
+/* Main */
+.main {
+  @include flex-col();
+}
+/* Article List */
+.article-list {
+  width: 100%;
+  &-item {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    animation: aListLoading 1s 0.5s cubic-bezier($transition-main, 1) forwards;
+    @include flex-center();
+
+    &-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 3;
+      @include flex-center();
+
+      &-title {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 5;
+        @include flex-center();
+
+        &-inner {
+          padding: 0.22em 0;
+          position: relative;
+          color: hslac($white, 1);
+          font-family: $font-title-smooth;
+          font-size: $heading-large;
+          font-weight: 900;
+          font-style: italic;
+          text-align: center;
+          letter-spacing: 0.025em;
+          line-height: 0.8;
+          text-decoration: none;
+          transform: scale(1.2, 1);
+          user-select: none;
+          overflow: hidden;
+          @include flex-center();
+
+          &:visited {
+            color: hslac($white, 1);
+          }
+        }
+        &-inner span {
+          top: 2em;
+          display: block;
+          position: relative;
+          transform: scale(0.8, 0.8) rotate(17deg);
+        }
+        &-inner .ht-outlined {
+          color: transparent;
+          -webkit-text-stroke: 1px hslac($white, 1);
+        }
+      }
+      &-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: hslac($black, 1);
+        z-index: 4;
+        animation: aListOverlayLoading 1s 0.5s cubic-bezier($transition-main, 1)
+          forwards;
+      }
+    }
+    &-background {
+      min-width: 100%;
+      min-height: 100%;
+      max-width: 110%;
+      position: absolute;
+      object-fit: cover;
+      transform: scale(1, 1);
+      transition: all 0.35s cubic-bezier($transition-main, 1);
+    }
+    &-background-blur {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      transform: scale(0.9, 0.9);
+      filter: blur(6rem);
+      opacity: 0.5;
+      z-index: 1;
+    }
+  }
+}
+/* Keyframes */
+@keyframes aListLoading {
+  0% {
+    padding: 0;
+  }
+  100% {
+    padding: 0;
+  }
+}
+@keyframes aListTitle {
+  0% {
+    top: 2em;
+    transform: scale(0.8, 0.8) rotate(17deg);
+  }
+  100% {
+    top: 0;
+    transform: scale(1, 1) rotate(0);
+  }
+}
+@keyframes aListOverlayLoading {
+  0% {
+    background-color: hslac($black, 1);
+  }
+  100% {
+    background-color: hslac($black, 0.6);
+  }
+}
+
+</style>
+
+<script>
+    // For the parallax
+var rellax = new Rellax('.rellax');
+
+
+const aListTitles = document.querySelectorAll(
+  ".article-list-item-inner-title-inner span"
+);
+const aListTitleWrappers = document.querySelectorAll(
+  ".article-list-item-inner-title-inner"
+);
+const aListBackgrounds = document.querySelectorAll(
+  ".article-list-item-background"
+);
+const toArticle = document.querySelectorAll(".to-article")[0];
+const aListAnimationDuration = ".65s";
+const aListAnimationDetails = "cubic-bezier(.175, .685, .32, 1) forwards";
+
+for (let i = 0; i < aListTitleWrappers.length; i++) {
+  let titleClicked = false;
+
+  aListTitleWrappers[i].addEventListener("mouseover", function (event) {
+    aListBackgrounds[i].style.transform = "scale(1.1, 1.1)";
+  });
+  aListTitleWrappers[i].addEventListener("click", function (event) {
+    event.preventDefault();
+
+    titleClicked = true;
+    aListBackgrounds[i].style.transform = "scale(1.1, 1.1)";
+    toArticle.style.animation = `navbarOut .35s ${aListAnimationDetails}`;
+
+    const targetSectionId = aListTitleWrappers[i].getAttribute("data-target");
+    const targetSection = document.getElementById(targetSectionId);
+
+    if (targetSection) {
+      const scrollOptions = {
+        top: targetSection.offsetTop,
+        behavior: "smooth"
+      };
+      window.scrollTo(scrollOptions);
+      aListBackgrounds[i].style.transform = "scale(1.1, 1.1)";
+      setTimeout(() => {
+        window.location.href = aListTitleWrappers[i].getAttribute("href");
+      }, 500);
+    }
+  });
+  aListTitleWrappers[i].addEventListener("mouseout", function (event) {
+    if (titleClicked === false) {
+      aListBackgrounds[i].style.transform = "scale(1, 1)";
+    } else {
+      aListBackgrounds[i].style.transform = "scale(1.1, 1.1)";
+    }
+  });
+}
+
+window.addEventListener("load", function () {
+  for (let i = 0; i < aListTitles.length; i++) {
+    const delay = 0.8 + i * 0.15;
+    aListTitles[
+      i
+    ].style.animation = `aListTitle ${aListAnimationDuration} ${delay}s ${aListAnimationDetails}`;
+  }
+});
+
+</script>
