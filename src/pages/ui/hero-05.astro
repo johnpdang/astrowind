@@ -1,0 +1,196 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hero Section Sticky Slides - Open Props</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />        
+    </head>
+    <body>
+        <section class="hero">
+            <div class="hero__image">
+                <div class="hero__overlay"></div>
+                <div class="hero__content">
+                    <h1 class="hero__title">Imagine the world without fear</h1>
+                    <div class="hero__text">"I wish for a real-life switch that could change the world around us."</div>
+                    <div class="hero__control">
+                        <div class="hero__switch">
+                            <div class="switch"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.hero__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    transform-origin: bottom;
+    transition: all 0.3s ease 0s;
+    pointer-events: none;
+}
+
+.hero__overlay.freedom{
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.83, 0, 0.17, 1);
+    
+}
+
+.hero__image {
+  position: absolute;
+  background: url("https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.6s cubic-bezier(0.83, 0, 0.17, 1);
+	overflow-x:hidden;
+
+}
+
+.hero__image.freedom{
+    background: url("https://images.unsplash.com/photo-1470167494176-c2e966a4eb3d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-origin: left;
+    transition: all 0.3s ease 0s;
+
+}
+
+
+
+.hero__content {
+position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  max-width: 43.75rem;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.hero__title {
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, -0.625rem + 10vw, 5rem);
+  color: #fff;
+  text-align: center;
+  line-height: 110%;
+  margin-bottom: 2rem;
+}
+
+.hero__text{
+    font-size: 1.25rem;
+    color: #fafafa;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+
+.hero__control{
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero__switch{
+ width: 70px;
+ height: 30px;
+ background-color: rgb(179, 17, 17);
+ border-radius: 1.875rem;
+ position: relative;
+ cursor: pointer;
+ margin-top: 5px;
+}
+
+.hero__switch.freedom{
+    background-color: rgb(16, 149, 202);
+}
+
+.hero__switch .switch{
+    background-color: #ffffff;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius:50%;
+    left: 4px;
+    top: 3px;
+    transition: all 0.3s ease 0s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.hero__switch.freedom .switch{
+    transform: translateX(39px);
+}
+
+.hero__label-fear{
+    font-size: 32px;
+    color:rgb(179, 17, 17); 
+    transition: all 0.3s ease 0s;
+}
+
+.hero__label-fear.freedom{
+    color: #000;
+    opacity: 0.5;
+}
+.hero__label-freedom{
+    font-size: 32px;
+    color:#fff;
+    opacity: 0.5;
+}
+
+.hero__label-freedom.freedom{
+    color: rgb(16, 149, 202);
+}
+</style>
+
+<script>
+const heroSwitch = document.querySelector('.hero__switch');
+const heroImage = document.querySelector('.hero__image');
+const heroOverlay = document.querySelector('.hero__overlay');
+
+heroSwitch.addEventListener("click", function (e) {
+    heroImage.classList.toggle('freedom');
+    heroSwitch.classList.toggle('freedom')
+    heroOverlay.classList.toggle('freedom');
+});
+</script>
