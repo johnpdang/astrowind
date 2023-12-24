@@ -1,0 +1,168 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading</title>
+    <link href="https://unpkg.com/splitting/dist/splitting.css" rel="stylesheet">
+    <link href="https://unpkg.com/splitting/dist/splitting-cells.css" rel="stylesheet">
+  </head>
+  <body translate="no" style="">
+    <input type="checkbox">
+  <div class="bg"></div>
+  <div class="content">
+    <div class="dots">
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="dot"><span></span></div>
+      <div class="ring"></div>
+    </div>
+  </div>   
+
+  </body>
+</html>
+
+<style lang="scss">
+:root {
+	--w: #fafafa; 
+	--b: #141414; 
+	--s: 1s;
+	--d: calc(var(--s) / 6);
+}
+
+$d: var(--d);
+
+* {
+	box-sizing: border-box;
+}
+	
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+input {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 4;
+	opacity: 0;
+	cursor: pointer;
+	&:checked ~ div {
+		filter: invert(1);
+	}
+	&:checked + .bg:before {
+		content: "CLICK TO DARK";		
+	}
+}
+
+.bg:before {
+		content: "CLICK TO LIGHT";
+		position: absolute;
+		color: var(--w);
+	width: 100%;
+	text-align: center;
+	bottom: 10vh;
+	font-family: Arial, Helvetica, serif;
+	font-size: 12px;
+	text-shadow: 0 0 1px var(--w);
+	opacity: 0.25;
+}
+
+body, .content, .dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bg {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background: var(--b);
+	z-index: -2;
+}
+
+.content {
+	width: 50vmin;
+	height: 50vmin;
+	background: #f000;
+	animation: spin 8s linear 0s infinite;
+}
+
+.dots {
+	background: #0ff0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.ring {
+	border: 1.5vmin solid var(--w);
+	width: 64%;
+	height: 64%;
+	border-radius: 100%;
+	z-index: 0;
+	box-shadow: 0 0 0 1vmin var(--b), 0 0 0 1vmin var(--b) inset;
+	animation: spin 8s linear 0s infinite reverse;
+}
+
+.dot {
+	width: 50%;
+	position: absolute;
+	height: 7vmin;
+	background: #f000;
+	left: 0;
+	transform-origin: 100% 50%;
+	z-index: -1;
+	animation: over-ring calc(var(--s) * 2) linear 0s infinite ;
+	span {
+		width: 5.5vmin;
+		height:5.5vmin;
+		left: 0;
+		border: 1vmin solid var(--b);
+		position: absolute;
+		background: var(--w);
+		border-radius: 100%;
+		animation: ball var(--s) ease-in-out 0s infinite alternate;
+	}
+	@for $i from 1 through 12 {	
+		&:nth-child(#{$i}) {
+			transform: rotate($i * -30deg);
+			$n: (($i - 1) * -1);
+			animation-delay: calc(#{$d} * #{$n});
+			span {
+				animation-delay: calc(#{$d} * #{$n});
+			}
+		}
+	}
+}
+
+@keyframes spin {
+	100% { transform: rotate(-360deg); }	
+}
+
+@keyframes ball {
+	100% { left: 12vmin; width: 4vmin; height: 4vmin; }	
+}
+
+@keyframes over-ring {
+	0%, 50% { z-index: -1; }	
+	51%, 100% { z-index: 1; }	
+}
+</style>
