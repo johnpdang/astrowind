@@ -1,0 +1,136 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hero - brightness</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />     
+    </head>
+    <body>
+        <div class="background" id="dark">
+  
+        </div>
+        <div class="container">
+          <div class="icons" id="light1">
+            <span class="material-symbols-outlined">
+                brightness_1
+            </span>
+          </div>
+          <div class="icons" id="light2">
+             <span class="material-symbols-outlined">
+                brightness_4
+            </span>
+          </div>
+          <div class="icons" id="light3">
+            <span class="material-symbols-outlined">
+                brightness_5
+            </span>
+          </div>
+          <div class="icons" id="light4">
+            <span class="material-symbols-outlined">
+              brightness_high
+            </span>
+          </div>
+        </div>
+    </body>
+</html>
+
+
+<style>
+body{
+  background-color: black;
+}
+.background{
+  position: fixed;
+  width: 100%; 
+  height: 100%; 
+  margin: auto; 
+  padding: 0; 
+  z-index: -1; 
+  transition: all 2s; 
+  background-position: center center; 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-image: url("https://images.pexels.com/photos/19137171/pexels-photo-19137171/free-photo-of-bali-indonesien-vacker-natur.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
+  filter: brightness(0%);
+}
+.light1{
+  filter: brightness(25%)
+}
+.light2{
+  filter: brightness(50%)
+}
+.light3{
+  filter: brightness(75%)
+}
+.light4{
+  filter: brightness(100%)
+}
+.container{
+  position: fixed;
+  z-index: 2; 
+  width: 50%; 
+  height: fit-content;
+  margin: auto; 
+  padding: 0;
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-evenly; 
+}
+.container{
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%)
+}
+.icons{
+  cursor: pointer; 
+  width: 5em;
+  height: 5em;
+  margin: auto; 
+  padding: 0; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+span{
+  color: white; 
+  font-size: 25px;
+}
+</style>
+
+<script>
+import $ from "https://esm.sh/jquery";
+const arr = ["light1", "light2", "light3", "light4"]; 
+const other = ["light2", "light1", "light4", "light3"];
+$("#light1").on("click", () => {
+  for(let i = 1; i < arr.length; i++){
+      $("#dark").removeClass(arr[i]);
+  }
+  $("#dark").addClass("light1"); 
+})
+$("#light2").on("click", () => {
+  for(let i = 1; i < other.length; i++){
+    $("#dark").removeClass(other[i])
+  }
+  $("#dark").addClass("light2"); 
+})
+$("#light3").on("click", () => {
+  for(let i = 0; i < other.length-1; i++){
+    $("#dark").removeClass(other[i])
+  }
+  $("#dark").addClass("light3"); 
+})
+$("#light4").on("click", () => {
+  for(let i = 0; i < arr.length-1; i++){
+      $("#dark").removeClass(arr[i]);
+  }
+  $("#dark").addClass("light4"); 
+})
+</script>
