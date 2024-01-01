@@ -1,0 +1,344 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero</title>
+  </head>
+  <body>
+<!--
+Anime Focus Speed Lines effect 
+ 集中線
+-->
+<!--
+Base code :
+forked from nekoneko-wanwan's "Canvasで漫画の集中線を描く" 
+https://codepen.io/nekoneko-wanwan/pen/xwRjbq
+tutorial : https://qiita.com/nekoneko-wanwan/items/0911a59bf835d5b9e35a
+感謝！
+
+Changed by Wakana : 
+1. Resized to match screen size.
+2. Added reset process for window resizing.
+-->
+
+<main>
+    <img src='https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1920' />
+    <img src='https://images.unsplash.com/photo-1621451683587-8be65b8b975c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1920' />
+  
+    <canvas id="myCanvas"></canvas>
+  </main>
+  </body>
+</html>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap");
+:root {
+  --x: 90vw;
+  --y: 100vh;
+  --scale: 1;
+  --duration: 2.5s;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  background-color: white;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  overflow: hidden;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: serif;
+  color: black;
+  text-align: center;
+  line-height: 1;
+}
+main {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*
+  background: url(https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1920)
+    no-repeat center 35% / cover;
+*/
+}
+main img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 33%;
+}
+main img:nth-of-type(2) {
+  object-position: center center;
+  opacity: 0;
+  animation: slider var(--duration) steps(2, jump-none) infinite;
+}
+#myCanvas {
+  position: absolute;
+  margin-left: calc(-100vw + var(--x));
+  margin-top: calc(-100vh + var(--y));
+  transform: scale(var(--scale));
+  animation: focus var(--duration) steps(2, jump-none) infinite;
+}
+@keyframes slider {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes focus {
+  0% {
+    --x: 90vw;
+    --y: 100vh;
+    --scale: 1;
+  }
+  100% {
+    --x: 100vw;
+    --y: 110vh;
+    --scale: 0.8;
+  }
+}
+
+</style>
+
+
+<script>
+/*!
+Anime Focus Speed Lines effect
+ 集中線
+*/
+/*!
+Base code :
+forked from nekoneko-wanwan's "Canvasで漫画の集中線を描く" 
+https://codepen.io/nekoneko-wanwan/pen/xwRjbq
+
+Changed by Wakana : 
+1. Resized to match screen size.
+2. Added reset process for window resizing.
+*/
+"use strict";
+console.clear();
+
+var cs = document.getElementById("myCanvas");
+var ctx = cs.getContext("2d");
+let w, h;
+let timerID = null;
+
+/*
+//一旦、保留中
+var root = document.querySelector(":root");
+function spotlight(e) {
+  let x = e.pageX * 2;
+  let y = e.pageY * 2;
+  if (x < 0) x = 0;
+  if (x > w) x = w;
+  if (y < 0) y = 0;
+  if (y > h) y = h;
+  root.style.setProperty("--x", x + "px");
+  root.style.setProperty("--y", y + "px");
+}
+window.addEventListener("pointermove", spotlight);
+window.addEventListener("pointerdown", spotlight);
+*/
+
+/*!*
+ * 集中線メーカー
+ * @param {obj} canvas object
+ * @param {number} centralX: 集中線を配置するx座標
+ * @param {number} centralY: 集中線を配置するy座標
+ * @param {number} lineWidth: 線の太さ（ランダムの上限）
+ * @param {number} lineNum: 線の数
+ * @param {number} circleRadiusMax: 集中線の円形の半径上限
+ * @param {number} circleRadiusMin: 集中線の円形の半径下限
+ * @param {color} lineColor: 集中線の色
+
+Copyright (c) 2023 by nekoneko-wanwan (https://codepen.io/nekoneko-wanwan/pen/xwRjbq)
+*/
+var focusLine = function (
+  cs,
+  centralX,
+  centralY,
+  lineWidth,
+  lineNum,
+  circleRadiusMax,
+  circleRadiusMin,
+  lineColor
+) {
+  var lines = [];
+
+  // canvasの中心から角までの斜辺距離を円の半径とする
+  var csRadius =
+    Math.sqrt(Math.pow(cs.width / 2, 2) + Math.pow(cs.height / 2, 2)) | 0;
+
+  /**
+   * ランダムな整数を返す
+   * @param max 最大値
+   * @param min 最小値
+   * @return min ~ max
+   */
+  var getRandomInt = function (max, min) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
+  /**
+   * 円周上の座標を返す
+   * @param d 角度
+   * @param r 半径
+   * @param cx, cy 中心座標
+   */
+  var getCircumPos = {
+    // x座標
+    x: function (d, r, cx) {
+      return Math.cos((Math.PI / 180) * d) * r + cx;
+    },
+    // y座標
+    y: function (d, r, cy) {
+      return Math.sin((Math.PI / 180) * d) * r + cy;
+    }
+  };
+
+  /**
+   * @constructor
+   */
+  var Liner = function () {
+    this.initialize();
+  };
+  Liner.prototype = {
+    /* initialize()からsetPos()へ値を移すと、アニメーションの動きが変わる */
+    initialize: function () {
+      this.deg = getRandomInt(360, 0);
+    },
+    setPos: function () {
+      this.moveDeg = this.deg + getRandomInt(lineWidth, 1) / 10;
+      this.endRadius = getRandomInt(circleRadiusMax, circleRadiusMin);
+
+      // 開始座標
+      this.startPos = {
+        x: getCircumPos.x(this.deg, csRadius, centralX),
+        y: getCircumPos.y(this.deg, csRadius, centralY)
+      };
+
+      // 移動座標
+      this.movePos = {
+        x: getCircumPos.x(this.moveDeg, csRadius, centralX),
+        y: getCircumPos.y(this.moveDeg, csRadius, centralY)
+      };
+
+      // 終了座標
+      this.endPos = {
+        x: getCircumPos.x(this.moveDeg, this.endRadius, centralX),
+        y: getCircumPos.y(this.moveDeg, this.endRadius, centralY)
+      };
+    },
+    update: function () {
+      this.setPos();
+    },
+    draw: function () {
+      ctx.beginPath();
+      ctx.lineWidth = 1;
+      ctx.fillStyle = lineColor;
+      ctx.moveTo(this.startPos.x, this.startPos.y);
+      ctx.lineTo(this.movePos.x, this.movePos.y);
+      ctx.lineTo(this.endPos.x, this.endPos.y);
+      ctx.fill();
+      ctx.closePath();
+    },
+    render: function () {
+      this.update();
+      this.draw();
+    }
+  };
+
+  /**
+   * 線インスタンスの作成
+   * @return lines[instance, instance...];
+   */
+  function createLines(num) {
+    var i = 0;
+    for (; i < num; i++) {
+      lines[lines.length] = new Liner();
+    }
+  }
+
+  /**
+   * 描画
+   */
+  function render() {
+    var i = 0;
+    var l = lines.length;
+    ctx.clearRect(0, 0, cs.width, cs.height);
+    for (; i < l; i++) {
+      lines[i].render();
+    }
+    timerID = setTimeout(function () {
+      render();
+    }, 100);
+  }
+
+  createLines(lineNum);
+  render();
+};
+
+/**
+ * focusLine()に渡す引数の設定
+ */
+function init() {
+  w = window.innerWidth * 2;
+  h = window.innerHeight * 2;
+
+  cs.width = w;
+  cs.height = h;
+  var conf = {
+    cx: w / 2,
+    cy: h / 2,
+    lineWidth: 10,
+    lineNum: 220,
+    crMax: Math.min(w, h) / 2 / 2, // 集中線の円形の半径上限
+    crMin: Math.min(w, h) / 3 / 2, // 集中線の円形の半径下限
+    color: "black"
+  };
+
+  focusLine(
+    cs,
+    conf.cx,
+    conf.cy,
+    conf.lineWidth,
+    conf.lineNum,
+    conf.crMax,
+    conf.crMin,
+    conf.color
+  );
+}
+init();
+
+//
+window.addEventListener("resize", onWindowResize);
+function onWindowResize() {
+  ctx.clearRect(0, 0, cs.width, cs.height);
+
+  clearTimeout(timerID);
+  timerID = null;
+  init();
+}
+
+</script>
