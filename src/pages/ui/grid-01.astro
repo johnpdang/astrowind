@@ -1,0 +1,170 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+  </head>
+  <body>
+    <div class="container">
+        <!--   <select class="border shadow shadow-large shadow-hover">
+            <option value="list">List</option>
+            <option value="grid">Grid</option>
+          </select> -->
+          
+          <div class="switcher">
+            <input type="radio" name="switcher" id="list" value="list" checked />
+            <label for="list" class="border shadow shadow-large shadow-hover">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>      
+            </label>
+        
+            <input type="radio" name="switcher" id="grid" value="grid" />
+            <label for="grid" class="border shadow shadow-large shadow-hover">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>      
+            </label>
+          </div>
+        
+          <section class="paper border shadow shadow-large">
+            <h1>From our blog</h1>
+              <ul class="card-list">
+                <li class="paper border shadow shadow-large shadow-hover">
+                  <a href="https://bejamas.io/blog/centering-elements-without-wrapper-in-css/">
+                    <h2>How to center an element in CSS without adding a wrapper</h2>
+                  </a>     
+                </li>
+                <li class="paper border shadow shadow-large shadow-hover">
+                  <a href="https://bejamas.io/blog/modern-css-properties-your-website-must-have/">
+                    <h2>Three modern CSS properties your website must have</h2>
+                  </a>       
+                </li>
+                <li class="paper border shadow shadow-large shadow-hover">
+                  <a href="https://bejamas.io/blog/css-animated-gradient-border/">
+                    <h2>Finding the best way to create animated gradient borders</h2>
+                  </a>                 
+                </li>
+            </ul>
+          </section>
+        </div>
+  </body>
+</html>
+
+
+
+
+<style>
+@import url("https://unpkg.com/papercss@1.9.2/dist/paper.css") layer(csspaper);
+
+.card-list {
+  display: grid;
+  gap: 1rem;
+}
+
+body:has(option[value="list"]:checked) .card-list {
+  grid-template-columns: 1fr;
+}
+
+body:has(option[value="grid"]:checked) .card-list {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+body:has(input[value="list"]:checked) .card-list {
+  grid-template-columns: 1fr;
+}
+
+body:has(input[value="grid"]:checked) .card-list {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Demo style */
+body {
+  min-height: 100vh;
+  background-color: #f6eee3;
+  background-size: 20px 20px;
+  background-image:  repeating-linear-gradient(0deg, #e5decf, #e5decf 1px, #f6eee3 1px, #f6eee3);
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+h1 {
+  color: var(--primary-color);
+  margin: 0 0 2rem;
+}
+
+select {
+  background-color: #fff;
+}
+
+select:focus {
+  border-color: var(--primary-color);
+}
+
+option {
+  background-color: var(--surface-color);
+  color: inherit;
+}
+
+li::before {
+  content: "";
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-list {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+}
+
+.switcher {
+  display: flex;
+}
+
+.switcher input {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.switcher label {
+  background-color: #fff;
+  padding: .2rem;
+  margin-inline-end: 1rem;
+  cursor: pointer;
+}
+
+.switcher input:checked + label {
+  background-color: var(--secondary);
+  color: #fff;
+}
+
+.switcher label svg {
+  display: block;
+}
+</style>
