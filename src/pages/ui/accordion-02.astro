@@ -1,0 +1,225 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Accordion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <link rel="stylesheet" href="css/style.css">
+
+        <ul class="c-accordion">
+         <li id="joker" class="c-accordion__item" style="--cover: url(https://fusion-universal-assets-production.s3.amazonaws.com/file-host/5af42070-0533-49eb-9822-934eebf32cb7--1399798036194765884-/8/Customer-facing-1.png)">
+          <a href="#joker" class="c-accordion__action">
+           <div class="c-accordion__content">
+            <h2 class="c-accordion__title c-accordion__title--hero c-accordion__title--hover-show">CUSTOMER FACING</h2>
+             <p class="c-accordion__description">Click the appropriate job role below if you are an Account Manager, HS Rep, CS Rep or hold any other position that interacts directly with our customers for content specific to your job role and responsibilities.</p>
+           </div>
+           <div class="c-accordion__aside">
+            <h2 class="c-accordion__title c-accordion__title--hover-hide">CUSTOMER FACING</h2>
+           </div>
+          </a>
+         </li>
+         <li id="john-wick" class="c-accordion__item" style="--cover: url(https://fusion-universal-assets-production.s3.amazonaws.com/file-host/5af42070-0533-49eb-9822-934eebf32cb7--1399798036194765884-/8/corporate-3.png)">
+          <a href="#john-wick" class="c-accordion__action">
+           <div class="c-accordion__content">
+            <h2 class="c-accordion__title c-accordion__title--hero c-accordion__title--hover-show">CORPORATE</h2>
+            <p class="c-accordion__description">
+             Click on one of the departments below if you are a team member who works at Headquarters, Tulsa Operations Center or any of the HUBS across HNA.
+            </p>
+           </div>
+           <div class="c-accordion__aside">
+            <h2 class="c-accordion__title c-accordion__title--hover-hide">CORPORATE</h2>
+           </div>
+          </a>
+         </li>
+         <li id="black-panther" class="c-accordion__item" style="--cover: url(https://fusion-universal-assets-production.s3.amazonaws.com/file-host/5af42070-0533-49eb-9822-934eebf32cb7--1399798036194765884-/8/Leadership-3.png)">
+          <a href="#black-panther" class="c-accordion__action">
+           <div class="c-accordion__content">
+            <h2 class="c-accordion__title c-accordion__title--hero c-accordion__title--hover-show">LEADERSHIP</h2>
+            <p class="c-accordion__description">
+             Click the appropriate job role below if you are an Account Manager, HS Rep, CS Rep or hold any other position that interacts directly with our customers for content specific to your job role and responsibilities.
+            </p>
+           </div>
+           <div class="c-accordion__aside">
+            <h2 class="c-accordion__title c-accordion__title--hover-hide">LEADERSHIP</h2>
+           </div>
+          </a>
+         </li>
+         <li id="marvel-captain" class="c-accordion__item" style="--cover: url(https://fusion-universal-assets-production.s3.amazonaws.com/file-host/5af42070-0533-49eb-9822-934eebf32cb7--1399798036194765884-/8/Hilti_Warehouse_2024-10.png)">
+          <a href="#marvel-captain" class="c-accordion__action">
+           <div class="c-accordion__content">
+            <h2 class="c-accordion__title c-accordion__title--hero c-accordion__title--hover-show">OPERATIONS</h2>
+            <p class="c-accordion__description">
+             Click on one of the departments below if you are a team member who works at an Operations Center across HNA.
+            </p>
+           </div>
+           <div class="c-accordion__aside">
+            <h2 class="c-accordion__title c-accordion__title--hover-hide">OPERATIONS</h2>
+           </div>
+          </a>
+         </li>
+        </ul>
+    </body>
+</html>
+
+
+<style lang="scss">
+
+
+$component: '.c-accordion';
+
+:root {
+ font-family: "Poppins", sans-serif;
+   color: #fff;
+
+ 
+ --color-primary: #3E66A0;
+ 
+ 
+ --cover-placeholder: var(--color-primary);
+}
+
+body {
+ padding: 0;
+ margin: 0;
+ height: 100vh;
+}
+
+#{$component} {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ height: 100%;
+ display: flex;
+ flex: 1 1 auto;
+ overflow: hidden;
+ &__item {
+  --cover: var(--cover-placeholder);
+  background: var(--cover);
+  background-position: center center;
+  background-size: cover;
+  background-color: var(--cover-placeholder);
+  background-blend-mode: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, #111111 100%);
+  
+  position: relative;
+  flex-grow: 1;
+  height: 100%;
+  width: 100px;
+  min-width: 2.05rem;
+  transition: all .3s ease-in-out;
+ 
+  
+  &:hover, &:focus-within, &:target {
+   _flex-grow: 2;
+   width: 100%;
+   background-color: transparent;
+   
+   #{$component} {
+    &__title {
+     &--hover-hide {
+      max-height: 0;
+      opacity: 0;
+     }
+     &--hover-show {
+      opacity: 1;
+     }
+    }
+    &__description {
+     opacity: 1;
+    }
+   }
+  }
+  
+  &:hover {
+   cursor: pointer;
+  }
+ }
+ &__action {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 15, 0.75);
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, #111111 100%);
+  text-decoration: none;
+ }
+ &__title {
+  color: white;
+  font-family: "Roboto Condensed";
+  margin: 0;
+  max-height: 100%;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  &--hover-show {
+   opacity: 0;
+   width: 100%;
+ 
+  }
+  &--hero {
+   font-size: 4rem;
+   line-height: 100%;
+   font-weight: 700;
+  text-transform: uppercase;
+   margin-left: -145px;
+  }
+ }
+ &__aside {
+  padding: 1rem;
+  position: absolute;
+  height: 100%;
+  right: 1rem;
+  bottom: 0;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  &:before {
+   content: '+';
+   color: #fff;
+   margin-bottom: 1rem;
+   font-size: 2rem;
+   display: inline-block;
+  }
+  &:after {
+   content: '';
+   flex-grow: 1;
+   width: 1px;
+   display: block;
+   margin-top: 1rem;
+   background-color: rgba(255, 255, 255, .2);
+  }
+ }
+&__content {
+padding: 24rem 4.5rem 0rem 8rem;
+  width: 55%;
+  text-align: left;
+   line-height: 4px;
+  font-size: 16px;
+  
+  left: -50rem;
+
+ }
+ &__description {
+  color: white;
+  font-weight: 500;
+  line-height: 120%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  margin-left: -145px;
+  width: 85%;
+ 
+ }
+}
+</style>
