@@ -1,0 +1,357 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="tfl-roundel-container">
+                <div class="tfl-roundel">
+                    <div>
+                        <span>Underground</span>
+                        <span>S. Kensington</span>
+                        <span>Sloane Square</span>
+                        <span>Victoria</span>
+                        <span>St. James's Park</span>
+                        <span>Westminster</span>
+                        <span>Embankment</span>
+                        <span>Temple</span>
+                        <span>Blackfriars</span>
+                        <span>Mansion House</span>
+                        <span>Cannon Street</span>
+                        <span>Monument</span>
+                        <span>Tower Hill</span>
+                        <span>@MrDarrenGriffin</span>
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="station interchange">
+                    <span></span>
+                </div>
+                <div class="station interchange">
+                    <span>South Kensington</span>
+                </div>
+                <div class="station">
+                    <span>Sloane Square</span>
+                </div>
+                <div class="station">
+                    <span>Victoria</span>
+                </div>
+                <div class="station interchange">
+                    <span>St. James's Park</span>
+                </div>
+                <div class="station interchange">
+                    <span>Westminster</span>
+                </div>
+                <div class="station">
+                    <span>Embankment</span>
+                </div>
+                <div class="station interchange">
+                    <span>Temple</span>
+                </div>
+                <div class="station">
+                    <span>Blackfriars</span>
+                </div>
+                <div class="station">
+                    <span>Mansion House</span>
+                </div>
+                <div class="station interchange">
+                    <span>Cannon Street</span>
+                </div>
+                <div class="station interchange">
+                    <span>Monument</span>
+                </div>
+                <div class="station">
+                    <span>Tower Hill</span>
+                </div>
+                <div class="station">
+                    <span>
+                        <a href="https://twitter.com/MrDarrenGriffin" target="_top">Follow me on <div>𝕏</div></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+  </body>
+</html>
+
+<style lang="scss">
+@font-face {
+	font-family: johnston100-medium;
+	src: url(https://mrdarrengriffin.com/Johnston100-Medium.woff2) format("woff2"),
+		url(https://mrdarrengriffin.com/Johnston100-Medium.woff) format("woff");
+}
+
+:root {
+	--tfl-red: #e32119;
+	--tfl-blue: #003888;
+	--tfl-green: #00792c;
+	--tfl-light-blue: #0098D4;
+
+	--tfl-station-index: 0;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	background: white;
+	display: flex;
+	margin: 0 auto 10vh auto;
+	max-width: 1200px;
+}
+
+.tfl-roundel {
+	color: #ffffff;
+	font-family: johnston100-medium;
+	font-size: 18px;
+	height: 26px;
+	isolation: isolate;
+	margin: 54px 4px;
+	position: relative;
+	text-transform: uppercase;
+	width: 160px;
+	z-index: 1;
+
+	div {
+		align-items: center;
+		background: var(--tfl-blue);
+		display: flex;
+		flex-direction: column;
+		inset: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: 1;
+
+		span {
+			align-items: center;
+			display: flex;
+			flex-shrink: 0;
+			height: 26px;
+			transform: translateY(calc(-26px * var(--tfl-station-index)));
+			transition: transform 0.4s ease-out;
+			white-space: nowrap;
+
+			&:last-child {
+				font-size: 14px;
+			}
+		}
+	}
+
+	&:before {
+		background: var(--tfl-red);
+		border-radius: 50%;
+		content: "";
+		height: 132px;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 132px;
+		z-index: -2;
+	}
+
+	&:after {
+		background: #ffffff;
+		border-radius: 50%;
+		content: "";
+		height: 86px;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 86px;
+		z-index: -1;
+	}
+}
+
+.sidebar {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-top: 25vh;
+	position: relative;
+
+	.tfl-roundel-container {
+		background: #ffffff;
+		height: 132px;
+		padding: 2rem;
+		position: sticky;
+		top: 0;
+		z-index: 1;
+
+		&:before {
+			background: #ffffff;
+			bottom: -1rem;
+			content: '';
+			height: 50vh;
+			left: calc(50% - 4px);
+			position: absolute;
+			width: 8px;
+		}
+	}
+}
+
+.line {
+	background: var(--tfl-green);
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	font-family: johnston100-medium;
+	gap: 20vh;
+	top: 0;
+	width: 8px;
+
+	a {
+		color: var(--tfl-blue);
+		text-decoration-color: rgba(0, 0, 0, 0.2);
+		text-decoration-thickness: 4px;
+		text-underline-offset: 6px;
+		transition: text-decoration .2s ease-in-out;
+
+		&:hover {
+			text-decoration-color: var(--tfl-red);
+			text-decoration-thickness: 4px;
+
+			div {
+				color: var(--tfl-red);
+			}
+		}
+
+		div {
+			display: inline;
+			font-size: 32px;
+			transition: color .2s ease-in-out;
+		}
+	}
+
+	&:after {
+		background: var(--tfl-green);
+		bottom: 0;
+		content: '';
+		height: calc(8px * 0.66);
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: calc(8px + (2 * (8px * 0.66)));
+	}
+
+	.station {
+		height: 3rem;
+		isolation: isolate;
+		line-height: 1;
+		position: sticky;
+		top: 12rem;
+		white-space: nowrap;
+
+		&:last-child {
+			line-height: 1.5;
+			margin-bottom: 80vh;
+
+			span {
+				margin-top: -6px;
+				pointer-events: all;
+			}
+		}
+
+		&:first-child {
+			z-index: 1;
+
+			span {
+				background: transparent;
+			}
+		}
+
+		span {
+			pointer-events: none;
+
+			&:before {
+				background: var(--tfl-green);
+				content: "";
+				height: calc(8px * 0.66);
+				left: -32px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: calc(8px + (8px * 0.66));
+			}
+		}
+
+		&:not(&.interchange) {
+			span:before {
+				z-index: -10 !important;
+			}
+		}
+
+		&.interchange {
+			span {
+				&:after {
+					background: #ffffff;
+					border-radius: 50%;
+					border: 4px solid #000000;
+					content: "";
+					height: 16px;
+					left: -40px;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 16px;
+					z-index: 10;
+				}
+			}
+		}
+
+		span {
+			background: #ffffff;
+			color: var(--tfl-blue);
+			font-size: 28px;
+			height: 2rem;
+			left: calc(8px * 4);
+			padding: 0.5rem 0;
+			position: absolute;
+			width: 20rem;
+
+			svg {
+				aspect-ratio: 1/1;
+				height: 24px;
+				width: 24px;
+			}
+		}
+	}
+}
+</style>
+
+
+<script>
+window.addEventListener("scroll", doPinnedCheck);
+
+function doPinnedCheck() {
+	const stations = document.querySelectorAll(".line .station");
+
+	const pinnedStations = [...stations].filter((station) => {
+		return station.getBoundingClientRect().top <= 193;
+	}).slice(1);
+
+	if (!pinnedStations) {
+		return;
+	}
+	
+	document.documentElement.style.setProperty(
+		"--tfl-station-index",
+		pinnedStations.length
+	);
+}
+</script>
