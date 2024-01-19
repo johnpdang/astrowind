@@ -1,0 +1,459 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nav</title>
+  </head>
+  <body>
+    <header>
+        <nav class="menu--left" role="navigation">
+          <div class="menuToggle">
+            <input type="checkbox"/>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul class="menuItem">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Info</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Show me more</a></li>
+            </ul>
+          </div>
+        </nav>
+        <nav class="menu--right" role="navigation">
+          <div class="menuToggle">
+            <input type="checkbox"/>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul class="menuItem">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Info</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Show me more</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      <nav class="menu--bottom--left" role="navigation">
+        <div class="menuToggle">
+          <input type="checkbox"/>
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul class="menuItem">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Show me more</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <nav class="menu--bottom--right" role="navigation">
+        <div class="menuToggle">
+          <input type="checkbox"/>
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul class="menuItem">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Show me more</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+      <main class="main">
+        <h1>Pure CSS Hamburger Menu</h1>
+        <div class="content">
+          <p>
+            Pure CSS Hamburger Menu is a design pattern for websites and apps that shows a menu icon that transforms into a cross icon when the user clicks on it, using only CSS properties and pseudo-elements to create a simple and responsive menu.
+          </p>
+        </div>
+      </main>
+      
+      <footer>
+        <div class="copyright">
+          Inspired from "Pure CSS Hamburger fold-out menu" by <a href="https://codepen.io/erikterwan/pen/EVzeRP" target="_blank">Erik Terwan</a>
+        </div>
+      </footer>
+  </body>
+</html>
+
+<style lang="scss">
+html{
+	box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*, *:after,*:before{
+	box-sizing: border-box;
+}
+
+body {
+  min-width: 350px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  overflow-x: hidden;
+  background: #232323;
+  background: linear-gradient(45deg, #042461 0%, rgba(225, 5, 34, 0) 70%), linear-gradient(135deg, #340447 10%, rgba(49, 5, 209, 0) 80%), linear-gradient(225deg, #0f053a 10%, rgba(10, 219, 216, 0) 80%), linear-gradient(315deg, #050813 100%, rgba(9, 245, 5, 0) 70%);
+  font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+.main {
+  position: relative;
+  padding: 60px 30px;
+  width: 100%;
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
+  .content {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 768px;
+    p {
+      line-height: 1.8;
+      text-align: center;
+    }
+  }
+}
+
+// Demo Content
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 30px;
+  color: #fff;
+  .copyright {
+    text-align: center;
+  }
+  a {
+    color: #1BB76E;
+    text-decoration: none;
+    transition: .25s;
+    &:hover {
+      color: #FF5500;
+    }
+  }
+}
+
+.menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  a {
+    text-decoration: none;
+    color: #232323;
+    transition: all 0.3s ease;
+    &:hover {
+      color: tomato;
+    }
+  }
+  input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    cursor: pointer;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  span {
+    position: relative;
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+    &:first-child {
+      transform-origin: 0% 0%;
+    }
+    &:nth-last-child(2) {
+      transform-origin: 0% 100%;
+    }
+  }
+}
+
+.menuToggle {
+  input {
+    &:checked ~ span {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #232323;
+      &:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+      &:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+      }
+    }
+    &:checked ~ .menuItem {
+      transform: none;
+    }
+    
+  }
+}
+
+.menuItem {
+  position: absolute;
+  width: 300px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  li {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+}
+
+.menu--left {
+  position: relative;
+  width: 50%;
+  .menuToggle {
+    left: 0;
+    input {
+      left: 50px;
+    }
+    span {
+      left: 50px;
+    }
+  }
+  .menuItem {
+    left: 50px;
+    margin: -100px 0 0 -50px;
+    transform: translate(-100%, 0);
+  }
+}
+
+.menu--right {
+  .menuToggle {
+    position: fixed;
+    right: 0;
+    input {
+      right: 50px;
+    }
+    span {
+      right: 50px;
+    }
+  }
+  .menuItem {
+    right: 0;
+    margin: -100px 0 0 0;
+    transform: translate(100%, 0);
+    li {
+      a {
+        &:hover {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.menu--bottom--right {
+  .menuToggle {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    input {
+      right: 50px;
+      bottom: 50px;
+      top: auto;
+      &:checked ~ .menuItem {
+        transform: scale(1);
+        // -webkit-transition: -webkit-transform .3s,visibility 0s 0s;
+        // -moz-transition: -moz-transform .3s,visibility 0s 0s;
+        // transition: transform .3s,visibility 0s 0s;
+        li {
+          &:nth-child(1) {
+            -webkit-animation: text-slide-in .2s;
+            -moz-animation: text-slide-in .2s;
+            animation: text-slide-in .2s;
+          }
+          &:nth-child(2) {
+            -webkit-animation: text-slide-in .3s;
+            -moz-animation: text-slide-in .3s;
+            animation: text-slide-in .3s;
+          }
+          &:nth-child(3) {
+            -webkit-animation: text-slide-in .4s;
+            -moz-animation: text-slide-in .4s;
+            animation: text-slide-in .4s;
+          }
+          &:nth-child(4) {
+            -webkit-animation: text-slide-in .5s;
+            -moz-animation: text-slide-in .5s;
+            animation: text-slide-in .5s;
+          }
+          &:nth-child(5) {
+            -webkit-animation: text-slide-in .6s;
+            -moz-animation: text-slide-in .6s;
+            animation: text-slide-in .6s;
+          }
+        }
+      }
+    }
+    span {
+      right: 50px;
+      bottom: 50px;
+      top: auto;
+    }
+  }
+  .menuItem {
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 125px;
+    transform-origin: bottom right;
+    transform: scale(0);
+    -webkit-transition: -webkit-transform .3s,visibility 0s 0s;
+    -moz-transition: -moz-transform .3s,visibility 0s 0s;
+    transition: transform .3s,visibility 0s 0s;
+    li {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      a {
+        &:hover {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.menu--bottom--left {
+  .menuToggle {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    input {
+      left: 50px;
+      bottom: 50px;
+      top: auto;
+      &:checked ~ .menuItem {
+        transform: scale(1);
+        // -webkit-transition: -webkit-transform .3s,visibility 0s 0s;
+        // -moz-transition: -moz-transform .3s,visibility 0s 0s;
+        // transition: transform .3s,visibility 0s 0s;
+        li {
+          &:nth-child(1) {
+            -webkit-animation: text-slide-in .2s;
+            -moz-animation: text-slide-in .2s;
+            animation: text-slide-in .2s;
+          }
+          &:nth-child(2) {
+            -webkit-animation: text-slide-in .3s;
+            -moz-animation: text-slide-in .3s;
+            animation: text-slide-in .3s;
+          }
+          &:nth-child(3) {
+            -webkit-animation: text-slide-in .4s;
+            -moz-animation: text-slide-in .4s;
+            animation: text-slide-in .4s;
+          }
+          &:nth-child(4) {
+            -webkit-animation: text-slide-in .5s;
+            -moz-animation: text-slide-in .5s;
+            animation: text-slide-in .5s;
+          }
+          &:nth-child(5) {
+            -webkit-animation: text-slide-in .6s;
+            -moz-animation: text-slide-in .6s;
+            animation: text-slide-in .6s;
+          }
+        }
+      }
+    }
+    span {
+      left: 50px;
+      bottom: 50px;
+      top: auto;
+    }
+  }
+  .menuItem {
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 125px;
+    transform-origin: bottom left;
+    transform: scale(0);
+    -webkit-transition: -webkit-transform .3s,visibility 0s 0s;
+    -moz-transition: -moz-transform .3s,visibility 0s 0s;
+    transition: transform .3s,visibility 0s 0s;
+    li {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      a {
+        &:hover {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes text-slide-in {
+  0% {
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    transform: translateX(100px)
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0)
+  }
+}
+</style>
