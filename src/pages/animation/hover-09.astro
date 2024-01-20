@@ -1,0 +1,192 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  </body>
+</html>
+
+<style>
+.auto {
+  cursor: auto;
+}
+.default {
+  cursor: default;
+}
+.none {
+  cursor: none;
+}
+.context-menu {
+  cursor: context-menu;
+}
+.help {
+  cursor: help;
+}
+.pointer {
+  cursor: pointer;
+}
+.progress {
+  cursor: progress;
+}
+.wait {
+  cursor: wait;
+}
+.cell {
+  cursor: cell;
+}
+.crosshair {
+  cursor: crosshair;
+}
+.text {
+  cursor: text;
+}
+.vertical-text {
+  cursor: vertical-text;
+}
+.alias {
+  cursor: alias;
+}
+.copy {
+  cursor: copy;
+}
+.move {
+  cursor: move;
+}
+.no-drop {
+  cursor: no-drop;
+}
+.not-allowed {
+  cursor: not-allowed;
+}
+.all-scroll {
+  cursor: all-scroll;
+}
+.col-resize {
+  cursor: col-resize;
+}
+.row-resize {
+  cursor: row-resize;
+}
+.n-resize {
+  cursor: n-resize;
+}
+.e-resize {
+  cursor: e-resize;
+}
+.s-resize {
+  cursor: s-resize;
+}
+.w-resize {
+  cursor: w-resize;
+}
+.ns-resize {
+  cursor: ns-resize;
+}
+.ew-resize {
+  cursor: ew-resize;
+}
+.ne-resize {
+  cursor: ne-resize;
+}
+.nw-resize {
+  cursor: nw-resize;
+}
+.se-resize {
+  cursor: se-resize;
+}
+.sw-resize {
+  cursor: sw-resize;
+}
+.nesw-resize {
+  cursor: nesw-resize;
+}
+.nwse-resize {
+  cursor: nwse-resize;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width:1000px;
+  margin:auto;
+}
+#root > div {
+  padding: 1rem;
+  border: 1px dashed #ffffff80;
+  margin: 0.5rem;
+  border-radius: 2px;
+}
+
+#root > div:hover {
+  background: #ffffff10;
+  border-color: lightblue;
+  color: lightblue;
+}
+
+html {
+  background: #333;
+  color: white;
+  font-family: monospace;
+}
+
+</style>
+
+<script>
+const list = [
+  "auto",
+  "default",
+  "none",
+  "context-menu",
+  "help",
+  "pointer",
+  "progress",
+  "wait",
+  "cell",
+  "crosshair",
+  "text",
+  "vertical-text",
+  "alias",
+  "copy",
+  "move",
+  "no-drop",
+  "not-allowed",
+  "all-scroll",
+  "col-resize",
+  "row-resize",
+  "n-resize",
+  "e-resize",
+  "s-resize",
+  "w-resize",
+  "ns-resize",
+  "ew-resize",
+  "ne-resize",
+  "nw-resize",
+  "se-resize",
+  "sw-resize",
+  "nesw-resize",
+  "nwse-resize"
+];
+
+const App = () => {
+  return (
+    <>
+      {list.map((item) => (
+        <div className={item}>{item}</div>
+      ))}
+    </>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+</script>
