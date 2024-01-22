@@ -1,0 +1,92 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Buttons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button>Book a demo</button>
+    </body>
+</html>
+
+<style>
+button {
+  border: 4px solid #000;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 2;
+  padding-inline: calc(.5em + 80px) .5em;
+  padding-block: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+}
+button:before,
+button:after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  translate: calc(80px - 100%);
+  transition: inherit;
+}  
+button:before {
+  background: #d8fe45;
+}
+button:after{
+  --r: calc(1lh/18);
+  background: repeating-linear-gradient(90deg,#7d7d7d 0,#ddd,#7d7d7d 50%) right/200%;
+  animation: b 1s linear infinite;
+  padding: calc(4*var(--r)) calc(6*var(--r));
+  clip-path: inset(0 0 0 calc(100% - 60px));
+  /* I can optimize the mask with less gradients but I did a fast implementation */
+  --m:/calc(50%/3) calc(2*var(--r)) repeat-x content-box
+    radial-gradient(var(--r) at var(--r),#000 70%,#0000 82%);
+  -webkit-mask:
+    calc(3*var(--r)) calc(0*var(--r)) var(--m),
+    calc(5*var(--r)) calc(0*var(--r)) var(--m),
+    calc(5*var(--r)) calc(2*var(--r)) var(--m),
+    calc(7*var(--r)) calc(2*var(--r)) var(--m),
+    calc(7*var(--r)) calc(4*var(--r)) var(--m),
+    calc(9*var(--r)) calc(4*var(--r)) var(--m),
+    calc(7*var(--r)) calc(6*var(--r)) var(--m),
+    calc(5*var(--r)) calc(6*var(--r)) var(--m),
+    calc(5*var(--r)) calc(8*var(--r)) var(--m),
+    calc(3*var(--r)) calc(8*var(--r)) var(--m);
+}
+@keyframes b {
+  to{background-position: left}
+}
+button:hover {
+  scale: 1.2;
+}
+button:hover:before,
+button:hover:after{
+  translate: 0;
+  clip-path: inset(0);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+    /*
+     the first try of the mask that works by need very precise value  
+    radial-gradient(#000 44%,#0000 48%)     
+      4px 1px/calc(1lh/9) calc(1lh/9) intersect,    
+    repeating-linear-gradient( 45deg,#0000 3% 11%,#000 0 16.6%)     
+      0 0   /100% 50.1% no-repeat add,    
+    repeating-linear-gradient(135deg,#0000 3% 11%,#000 0 16.6%)     
+      0 100%/100% 50% no-repeat;*/
+</style>
