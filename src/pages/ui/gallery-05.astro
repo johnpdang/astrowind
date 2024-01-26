@@ -1,0 +1,90 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Gallery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="gallery">
+            <img style="--i:1" class="photo1" src="https://images.unsplash.com/photo-1628889086461-87405eeacd4c?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDU4OTg4OTl8&ixlib=rb-4.0.3&q=85" alt="A person holding a skateboard at the side of a road. " title="Photo by Hans Isaacson for Unsplash">
+            <img style="--i:2" class="photo2" src="https://images.unsplash.com/photo-1578524778723-c3ee7d64dc42?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDU4OTg5NTh8&ixlib=rb-4.0.3&q=85" alt="A person standing with their foot on the back of a skateboard, tilting it up onto its back wheels. " title="Photo by Shawn for Unsplash">
+            <img style="--i:3" class="photo3" src="https://images.unsplash.com/photo-1601247309037-a3e434b07906?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDU4OTkxMjl8&ixlib=rb-4.0.3&q=85" alt="A skateboard flipping in the air beneath the skater's feet, mid-trick." title="Photo by Erik Mclean for Unsplash">
+        <h1>Sk8 or Die</h1>
+        </div>
+    </body>
+</html>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+	  background-color: black;
+	font-family: 'Luckiest Guy', cursive;
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    height: 100%;
+	
+}
+
+.gallery img {
+	opacity: 0;
+	animation: slideTop .5s ease forwards;
+	animation-delay: calc(.75s * var(--i));
+	filter:brightness(70%) contrast(150%) saturate(30%) brightness(150%);
+	box-shadow: -3px -3px 23px black;
+}
+
+[class^="photo"] {
+    position: absolute;
+    width: 40vw; 
+    height: auto;
+}
+
+.photo1 {
+    top: calc(10vh - 50px);
+    left: calc(10vw - 50px);
+}
+
+.photo2 {
+    top: calc(30vh - 50px);
+    left: calc(30vw - 50px);
+}
+
+.photo3 {
+    top: calc(50vh - 50px);
+    left: 50vw;
+}
+
+h1{
+	position: absolute;
+	top: 0;
+	right: 2rem;
+	color: white;
+	animation: slideTop .5s ease forwards;
+	opacity:0;
+	animation-delay: calc(.5s);
+}
+
+@keyframes slideTop {
+	0% {
+		transform: translatey(100px);
+		opacity: 0;
+	}
+	
+	100% {
+		transform: translatey(0px);
+		opacity: 1;
+	}
+}
+</style>
