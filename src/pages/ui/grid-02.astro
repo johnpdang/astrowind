@@ -1,0 +1,312 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+  </head>
+  <body>
+    <header class="container">
+        <header class="region header">
+          header
+        </header>
+      
+        <main class="region main">
+          main
+        </main>
+      
+        <aside class="region aside">
+          <button aria-label="click here or use ArrowUp key to expand">
+            <span class="aside-label">
+              aside
+            </span>
+      
+            <span class="aside-instructions" aria-hidden="true">
+              <span class="click-icon-container">
+                <svg class="icon click-icon">
+                  <use xlink:href="#click-icon"></use>
+                </svg>
+              </span>
+              <span class="icon-separator">or</span>
+              <svg class="icon chevron-up-icon">
+                <use xlink:href="#chevron-up-icon"></use>
+              </svg>
+              <svg class="icon chevron-down-icon">
+                <use xlink:href="#chevron-down-icon"></use>
+              </svg>
+            </span>
+      
+          </button>
+        </aside>
+        
+        <footer class="region footer">
+          footer
+        </footer>
+      </div>
+      
+      <svg style="display: none;">
+        <symbol id="click-icon" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M448 240v96c0 3.084-.356 6.159-1.063 9.162l-32 136C410.686 499.23 394.562 512 376 512H168a40.004 40.004 0 0 1-32.35-16.473l-127.997-176c-12.993-17.866-9.043-42.883 8.822-55.876 17.867-12.994 42.884-9.043 55.877 8.823L104 315.992V40c0-22.091 17.908-40 40-40s40 17.909 40 40v200h8v-40c0-22.091 17.908-40 40-40s40 17.909 40 40v40h8v-24c0-22.091 17.908-40 40-40s40 17.909 40 40v24h8c0-22.091 17.908-40 40-40s40 17.909 40 40zm-256 80h-8v96h8v-96zm88 0h-8v96h8v-96zm88 0h-8v96h8v-96z" />
+        </symbol>
+        <symbol id="chevron-up-icon" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z" />
+        </symbol>
+        <symbol id="chevron-down-icon" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
+        </symbol>
+      </svg>
+  </body>
+</html>
+
+
+
+
+<style>
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    135deg,
+    #FFF,
+    #DAEEEE
+  );
+  font-family: monospace;
+}
+
+button {
+  appearance: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+.icon {
+  color: #7a8a90;
+  transition: all .3s;
+}
+
+.container {
+  --gutter: 1em;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: clamp(240px, 50vw, 360px);
+  padding: var(--gutter);
+  gap: var(--gutter);
+  background: #fff;
+  border-radius: 2em;
+  box-shadow: .1em .1em .3em #0001;
+}
+
+.region {
+  --region-bg: #DAEEEEAA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  text-align: center;
+  background: var(--region-bg);
+  font-variant: small-caps;
+  letter-spacing: .1em;
+  color: #88a5a9;
+}
+
+.header {
+  min-height: 5vh;
+  grid-column: span 2;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.with-long-aside .header {
+  grid-row: 1;
+  grid-column: 1;
+  border-top-right-radius: 0;
+  animation: pulse linear forwards 0.5s;
+}
+
+@keyframes pulse {
+  20% {
+    background: lemonchiffon;
+  }
+  to {
+    background: var(--region-bg);
+  }
+}
+
+.main {
+  min-height: 20vh;
+}
+
+.aside {
+  position: relative;
+  padding: 0;
+}
+
+.aside:hover {
+  box-shadow: inset 0 0 5em .1em #0351;
+}
+
+.with-long-aside .aside {
+  grid-row: 1 / 3;
+  border-top-right-radius: 1em;
+  animation: pulse linear forwards 0.5s;
+}
+
+.aside button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.aside-label {
+  display: flex;
+  align-items: flex-start;
+  min-height: 1%;
+  transition: all .3s;
+}
+
+.with-long-aside .aside-label {
+  min-height: 40%;
+}
+
+.aside-instructions {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: all .3s;
+}
+
+.icon-separator {
+  padding-left: 3px;
+  font-size: .9em;
+}
+
+.click-icon-container {
+  position: relative;
+}
+
+:active .click-icon-container::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 2px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #a8c5c9;
+  opacity: 0;
+  transform: scale(0);
+  animation: icon-click .5s forwards;
+}
+
+@keyframes icon-click {
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.click-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.click-icon,
+.chevron-up-icon,
+.chevron-down-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.chevron-down-icon,
+.chevron-up-icon {
+  display: none;
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.chevron-up-icon {
+  display: initial;
+  animation: icon-appear .3s forwards linear;
+}
+
+.with-long-aside .chevron-up-icon {
+  display: none;
+  animation: icon-disappear .3s forwards linear;
+}
+
+.with-long-aside .chevron-down-icon {
+  display: initial;
+  animation: icon-appear .3s forwards linear;
+}
+
+@keyframes icon-appear {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes icon-disappear {
+  to {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+.footer {
+  min-height: 5vh;
+  grid-column: span 2;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+</style>
+
+<script>
+const container = document.querySelector('.container')
+const target = document.querySelector('.aside button')
+
+const labels = [
+  target.getAttribute('aria-label'),
+  'click here or use ArrowDown key to shrink'
+]
+let activeLabel = 0
+const modifier = 'with-long-aside'
+
+const toggle = () => {
+  container.classList.toggle(modifier)
+  activeLabel = Number(!activeLabel)
+  target.setAttribute('aria-label', labels[activeLabel])
+}
+
+const onKeyUp = (e) => {
+  const modified = container.classList.contains(modifier)
+  if (e.key === 'ArrowDown' && modified) {
+    toggle()
+  }
+  if (e.key === 'ArrowUp' && !modified) {
+    toggle()
+  }
+}
+
+target.addEventListener('click', toggle)
+window.addEventListener('keydown', onKeyUp)    
+</script>
