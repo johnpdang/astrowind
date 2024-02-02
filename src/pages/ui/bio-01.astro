@@ -1,0 +1,153 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio</title>
+  </head>
+  <body>
+    <div class="box">
+        <div class="card">
+            <div class="imgBox">
+                <img src="https://images.unsplash.com/photo-1557053908-4793c484d06f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTMxMzk5NTF8&ixlib=rb-4.0.3&q=80&w=400" alt="some image">
+            </div>
+            <div class="details">
+                <h2>Rita Brown <br><span>London, UK</span></h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="imgBox">
+                <img src="https://images.unsplash.com/photo-1611695434398-4f4b330623e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTMxMzk5OTd8&ixlib=rb-4.0.3&q=80&w=400" alt="some image">
+            </div>
+            <div class="details">
+                <h2>James Nelson <br><span>San Francisco, US</span></h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="imgBox">
+                <img src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTMxMzk5NTF8&ixlib=rb-4.0.3&q=80&w=400" alt="some image">
+            </div>
+            <div class="details">
+                <h2>Christine McKay <br><span>New York, US</span></h2>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #313131;
+    font-family: 'Poppins', sans-serif;
+}
+
+.box {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    gap: 32px;
+	flex-wrap: wrap;
+	padding: 32px
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: #ffffff;
+    border-radius: 3px;
+    margin: 0 auto;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+    z-index: -1;
+    transition: .5s;
+}
+
+.card:hover::after {
+    transform: rotate(10deg);
+}
+
+.card:hover::before {
+    transform: rotate(20deg);
+}
+
+.card .imgBox {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #101010;
+    z-index: 1;
+    transition: .5s;
+}
+
+.card:hover .imgBox {
+    bottom: 75px;
+}
+
+.card .imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.card .details {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 55px;
+}
+
+.card .details h2 {
+    margin-top: 5px;
+    padding: 0;
+    font-weight: 900;
+    font-size: 20px;
+    color: #101010;
+    text-align: center;
+    line-height: 1.15em;
+}
+
+.card .details h2 span {
+    font-weight: 400;
+    font-size: 15px;
+    color: #0dac4f;
+}
+</style>
