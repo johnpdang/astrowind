@@ -1,0 +1,197 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Card</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="ellipse bgEllipse2"></div>    
+        <div class="ellipse bgEllipse1"></div>
+        <div class="container">
+          <div class="card">
+            <div class="ellipseContainer">
+              <div class="ellipse ellipse2"></div>    
+              <div class="ellipse ellipse1"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mouseEllipse"></div>     
+      </body>
+</html>
+
+<style>
+body {
+  margin: 0;
+  background: #f7f9fc;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  perspective: 100vw;
+}
+
+.card {
+  --shadowX: 0;
+  --shadowY: 0;
+  --shadowBlur: 30px;
+  width: 300px;
+  height: 400px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 8px;
+  z-index: 2;
+  cursor: pointer;
+  border: 1px outset #fff2;
+  transition: height 600ms ease, width 600ms ease;
+  
+  &:hover {
+    --shadowBlur: 10px;
+
+    .ellipseContainer {
+      opacity: 1;
+    }
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+    transition: filter 200ms;
+    
+    z-index: 0;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(50,50,93,0.15);
+    transform: translate(var(--shadowX), var(--shadowY));
+    filter: blur(var(--shadowBlur));
+    border-radius: 10px;
+    transition: filter 200ms;
+    
+    z-index: -1;
+  }
+}
+
+.ellipseContainer {
+  position: relative;
+  background: #f7f9fc;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0.4;
+  transition: opacity 300ms;
+}
+
+.ellipse {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%); 
+  opacity: 0.4;
+}
+
+.ellipse1, .bgEllipse1 {
+  background: radial-gradient(#9a66ff, #9a66ff00 70%);
+}
+
+.ellipse2, .bgEllipse2 {
+  background: radial-gradient(#2cede2, #2cede200 70%);
+}
+
+.bgEllipse1,
+.bgEllipse2 {
+  opacity: 0.2;
+  transition: opacity 200ms;
+}
+</style>
+
+<script>
+// full background ellipse follow mouse
+const cardEl = document.querySelector('.card');
+const ellipse1 = document.querySelector('.ellipse1');
+const ellipse2 = document.querySelector('.ellipse2');
+const bgEllipse1 = document.querySelector('.bgEllipse1');
+const bgEllipse2 = document.querySelector('.bgEllipse2');
+let targScale = 1;
+let scale = 1;
+let mouseX = 0.5;
+let mouseY = 0.5;
+let rX = 0;
+let rY = 0;
+let e1X = 0;
+let e1Y = 0;
+let e2X = 0;
+let e2Y = 0;
+
+cardEl.addEventListener('mouseenter', (e) => {
+  targScale = 0.95;
+  bgEllipse1.style.opacity = 0.1;
+  bgEllipse2.style.opacity = 0.1;
+})
+cardEl.addEventListener('mouseleave', (e) => {
+  targScale = 1;
+  bgEllipse1.style.opacity = 0.3;
+  bgEllipse2.style.opacity = 0.3;
+})
+cardEl.addEventListener('mousedown', (e) => {
+  targScale = 0.9;
+  bgEllipse1.style.opacity = 0.6;
+  bgEllipse2.style.opacity = 0.6;
+  cardEl.style.setProperty('--shadowBlur', `10px`);  
+})
+cardEl.addEventListener('mouseup', (e) => {
+  targScale = 0.95;
+  bgEllipse1.style.opacity = 0.1;
+  bgEllipse2.style.opacity = 0.1;
+  cardEl.style.setProperty('--shadowBlur', `20px`);
+  cardEl.style.height = `${Math.random() * 300 + 200}px`
+  cardEl.style.width = `${Math.random() * 300 + 200}px`  
+})
+window.addEventListener('mousemove', (e) => {
+  mouseX = (e.pageX - window.innerWidth / 2) / window.innerWidth;
+  mouseY = (e.pageY - window.innerHeight / 2) / window.innerHeight;
+})
+
+function updateCard() {
+  rX += 0.07 * (mouseY - rX);
+  rY += 0.07 * (mouseX - rY);
+  e1X += 0.03 * (mouseX * 4 - e1X);
+  e1Y += 0.03 * (mouseY * 5 - e1Y);
+  scale += 0.14 * (targScale - scale);
+  cardEl.style.transform = `rotateX(${rX * -40}deg) rotateY(${rY * 40}deg) scale(${scale})`;
+  ellipse1.style.transform = `translate(${e1X * -100 - 50 + Math.cos(performance.now() / 500) * 50}%, ${e1Y * 100 - 150 + Math.sin(performance.now() / 500) * 50}px) scale(2)`;
+  ellipse2.style.transform = `translate(${e1X * 100 - 50 + Math.sin(performance.now() / 500) * 50}%, ${e1Y * -100 - 150 + Math.cos(performance.now() / 500) * 50}px) scale(2)`;
+  
+  bgEllipse1.style.transform = `translate(${e1X * -100 - 50 + Math.cos(performance.now() / 500) * 50}%, ${e1Y * 100 - 150 + Math.sin(performance.now() / 500) * 50}px) scale(4)`;
+  bgEllipse2.style.transform = `translate(${e1X * 100 - 50 + Math.sin(performance.now() / 500) * 50}%, ${e1Y * -100 - 150 + Math.cos(performance.now() / 500) * 50}px) scale(4)`;  
+  
+  cardEl.style.setProperty('--shadowX', `${e1X * -10}px`);
+  cardEl.style.setProperty('--shadowY', `${e1Y * -10}px`);
+  requestAnimationFrame(updateCard)
+}
+
+updateCard();    
+</script>
