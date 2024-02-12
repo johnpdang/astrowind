@@ -1,0 +1,292 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <a href="#css">CSS</a>
+            <a href="#html">HTML</a>
+            <a href="#js">JS</a>
+            <a href="#php">PHP</a>
+            <a href="#sql">SQL</a>
+        </nav>
+    </header>
+    
+    <div class="scroller">
+        <span></span>
+        <span></span>
+    </div>
+    
+    <section id="css">
+        <h2>CSS</h2>
+        <p>Cascading Style Sheets</p>
+    </section>
+    
+    <section id="html">
+        <h2>HTML</h2>
+        <p>HyperText Markup Language</p>
+    </section>
+    
+    <section id="js">
+        <h2>JS</h2>
+        <p>Client-Side Scripting Language</p>
+    </section>
+    
+    <section id="php">
+        <h2>PHP</h2>
+        <p>Hypertext Preprocessor</p>
+    </section>
+    
+    <section id="sql">
+        <h2>SQL</h2>
+        <p>Structured Query Language</p>
+    </section>
+  </body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+:root {
+	--black: #373737;
+	--sect1: #ff9900;
+	--sect2: #2196F3;
+	--sect3: #e63232;
+	--sect4: #8BC34A;
+	--sect5: #8946ff;
+}
+
+* { 
+	box-sizing: border-box; 
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	transition: all 0.5s ease 0s;
+	font-family: 'Varela Round', cursive;
+}
+
+body:after {
+	content: "Progress Bar only in Chrome";
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: var(--black);
+	font-size: 1rem;
+	padding: 20px 0;
+}
+
+header {
+	width: 100%;
+}
+
+nav {
+	top: 0;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	height: 65px;
+	background: linear-gradient(0deg, #fff0 0px, var(--black) 1px 100%);
+	text-align: center;
+	display: flex;
+	transition: all 0.5s ease 0s;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 16px 10px;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	font-size: 1.6rem;
+	border: 2px solid #000;
+	border-top-width: 0px;
+	border-bottom-width: 4px;
+}
+
+nav a:first-child {
+	border-left-width: 0;
+}
+
+nav a:last-child {
+	border-right-width: 0;
+}
+
+nav a:hover {
+	background: linear-gradient(90deg, var(--clr) 0 50%, var(--black) 0 100%);
+	background-size: 200%;
+	background-position: 100% 0;
+	animation: colorize 0.5s ease 0s;
+	animation-fill-mode: forwards;
+	transition: all 0.5s ease 0s;
+}
+
+@keyframes colorize {
+	100% { background-position: 0 0; }
+}
+
+nav a:nth-child(1):hover {
+	--clr: var(--sect1);
+}
+nav a:nth-child(2):hover {
+	--clr: var(--sect2);
+}
+nav a:nth-child(3):hover {
+	--clr: var(--sect3);
+}
+nav a:nth-child(4):hover {
+	--clr: var(--sect4);
+}
+nav a:nth-child(5):hover {
+	--clr: var(--sect5);
+}
+
+
+nav:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 20vw;
+	width: 20%;
+	height: 100%;
+	z-index: -1;
+	background: linear-gradient(90deg, var(--sect1) 0 calc(20vw - 3px), var(--sect2) 0 calc(40vw - 6px), var(--sect3) 0 calc(60vw - 10px), var(--sect4) 0 calc(80vw - 13px), var(--sect5) 0 100vw);
+	animation: progress linear;
+	animation-timeline: scroll(root);
+}
+
+@keyframes progress {
+	100% { width: 100%; }
+}
+
+
+
+/*** SECTIONS ***/
+section {
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	font-size: 4rem;
+	color: #fff;
+	padding-top: 30px;
+	border-bottom: 4px solid #000;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+section h2, section p {
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+
+section p {
+	font-size: 1.25rem;
+}
+
+#css {
+	background-color: var(--sect1);
+}
+
+#html {
+	background-color: var(--sect2);
+}
+
+#js {
+	background-color: var(--sect3);
+}
+
+#php {
+	background-color: var(--sect4);
+}
+
+#sql {
+	background-color: var(--sect5);
+}
+
+
+
+/*** SCROLLER ***/
+.scroller {
+	position: fixed;
+	width: 30px;
+	height: 50px;
+	background: radial-gradient(ellipse at 50% 33%, #fff0 0 3px, #fff 4px 100%);
+	top: calc(50vh - 15px);
+	right: 20px;
+	border-radius: 20px;
+}
+
+.scroller:before {
+	content: "";
+	position: absolute;
+	width: 30px;
+	height: 50px;
+	background: radial-gradient(circle at 50% 33%, #fff0 0 6px, #fff 7px 100%);
+	border-radius: 20px 20px;
+	left: 0;
+	bottom: 0;
+}
+
+.scroller span {
+	position: absolute;
+	height: 30px;
+	border-left: 5px dotted #fff;
+	top: -50px;
+	left: 13px
+}
+
+.scroller span + span {
+	top: inherit;
+	top: 70px;
+}
+
+.scroller span:before {
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border: 4px solid #fff;
+	border-color: #fff #fff #fff0 #fff0;
+	border-radius: 4px;
+	transform: rotate(-45deg);
+	left: -11px;
+	top: -13px;
+}
+
+.scroller span + span:before {
+	border-color: #fff0 #fff0 #fff #fff ;
+	top: 28px;
+}
+
+.scroller:after {
+	content: "Scroll";
+	position: absolute;
+	left: -5rem;
+	font-size: 1.65rem;
+	bottom: 0.5rem;
+	color: #fff;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 580px) {
+	nav a { font-size: 1.25rem; line-height: 2rem; }
+	.scroller:after { content: "";}
+}
+</style>
