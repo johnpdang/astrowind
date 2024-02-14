@@ -1,0 +1,118 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+  </head>
+  <body>
+<!--
+I made use of semantic html; even without CSS the blocks would still be numbered and SEO wise it's clear for search engines that this is a an ordered list of items.
+-->
+<ol class="steps">
+    <li>
+      <div class="block block--left"></div>
+      <div class="block block--right"></div>
+    </li>
+    <li>
+      <div class="block block--left"></div>
+      <div class="block block--right"></div>
+    </li>
+    <li>
+      <div class="block block--left"></div>
+      <div class="block block--right"></div>
+    </li>
+    <li>
+      <div class="block block--left"></div>
+      <div class="block block--right"></div>
+    </li>
+    <li>
+      <div class="block block--left"></div>
+      <div class="block block--right"></div>
+    </li>
+  </ol>
+  </body>
+</html>
+
+<style>
+/*******
+Example solution for: 
+
+https://www.reddit.com/r/Frontend/comments/1apk95f/how_would_you_build_something_like_this/
+*******/
+
+/* Essence of the solution: */
+ol.steps {
+  margin: 0 0 40rem;
+  padding: 0;
+  position: relative;
+  counter-reset: section-number;
+
+  li {
+    counter-increment: section-number;
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr;
+    gap: 2rem;
+
+    &:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+
+    &::before {
+      content: counter(section-number);
+      order: 2;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1rem solid white;
+      margin-inline: -1rem;
+      color: white;
+      background: linear-gradient(to bottom, blue 25vw, silver 0%) fixed;
+      z-index: -1;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: calc(100% + 1rem);
+    width: 2px;
+    background: linear-gradient(to bottom, blue 25vw, silver 0%) fixed;
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 1rem;
+    z-index: -2;
+  }
+}
+
+/* Unimportant stuff, just for demo purposes: */
+html,
+body {
+  margin: 0;
+}
+
+body {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.block {
+  border: 1px solid silver;
+  background-color: aliceblue;
+  aspect-ratio: 1.5 / 1;
+}
+
+.block--left {
+  order: 1;
+}
+
+.block--right {
+  order: 3;
+}
+</style>
