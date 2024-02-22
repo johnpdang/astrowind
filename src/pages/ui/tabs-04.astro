@@ -1,0 +1,259 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tabs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <ul class="tabs">
+            <li class="active" data-id="0">Education</li>
+            <li data-id="1">In-session Training</li>
+            <li data-id="2">Experience</li>
+            <li data-id="3">Interview</li>
+        </ul>
+    
+        <div class="contents">
+    
+            <div class="box show" data-content="0">
+                <img src="https://images.pexels.com/photos/5088009/pexels-photo-5088009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+                <div>
+                    <h3>Lorem ipsum dolor</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                    </p>
+                </div>
+            </div>
+    
+            <div class="box hide" data-content="1">
+                <img src="https://images.pexels.com/photos/5865862/pexels-photo-5865862.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" alt="">
+                <div>
+                    <h3>Lorem ipsum dolor</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                    </p>
+                </div>
+            </div>
+    
+            <div class="box hide" data-content="2">
+                <img src="https://images.pexels.com/photos/3761308/pexels-photo-3761308.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+                <div>
+                    <h3>Lorem ipsum dolor</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                    </p>
+                </div>
+            </div>
+    
+            <div class="box hide" data-content="3">
+                <img src="https://images.pexels.com/photos/5336951/pexels-photo-5336951.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+                <div>
+                    <h3>Lorem ipsum dolor</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium itaque amet ducimus, magni
+                        iure
+                        a repudiandae molestias nemo voluptatibus voluptas earum excepturi architecto, iusto necessitatibus
+                        sequi perferendis veritatis! Voluptatem?
+                    </p>
+                </div>
+            </div>
+    
+        </div>
+    </body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212428;
+    overflow-x: clip;
+}
+
+ul {
+    list-style: none;
+}
+
+.tabs {
+    width: 80%;
+    height: 100px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.tabs li {
+    background-color: #212327;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c4cfde;
+    font-family: 'Poppins', sans-serif;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    cursor: pointer;
+}
+
+.tabs li:hover {
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    color: #f9004d;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.active {
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    color: #f9004d !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.contents {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.box {
+    gap: 20px;
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    animation: moving 1s ease;
+    -webkit-animation: moving 1s ease;
+}
+
+.box img {
+    width: 50%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.box h3 {
+    color: #c4cfde;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.box p {
+    color: #c4cfde;
+    opacity: .5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes moving {
+    from {
+        transform: translateX(-50px);
+        -webkit-transform: translateX(-50px);
+        -moz-transform: translateX(-50px);
+        -ms-transform: translateX(-50px);
+        -o-transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+        opacity: 1;
+    }
+}
+</style>
+
+<script>
+'use strict';
+const tabs = document.querySelectorAll('[data-id]');
+const contents = document.querySelectorAll('[data-content]');
+let id = 0;
+
+tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+        tabs[id].classList.remove('active');
+        tab.classList.add('active');
+        id = tab.getAttribute('data-id');
+        contents.forEach(function (box) {
+            box.classList.add('hide');
+            if (box.getAttribute('data-content') == id){
+                box.classList.remove('hide');
+                box.classList.add('show');
+            }
+        });
+    });
+});    
+</script>
