@@ -1,0 +1,101 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Loading</title>
+  </head>
+  <body>
+    <svg viewBox="-72 10 116 36">
+        <text id="number" x="-15" y="40">0</text>
+        <text id="slash" x="0" y="41.3" transform="rotate(10,0,28.5)">/<animateTransform class="leap"
+          attributeName="transform" type="rotate"
+          from="10,0,28.5" to="370,0,28.5" 
+          begin="indefinite" dur="1s" /></text>
+        <text id="zeros" transform="matrix(1.32,0,0.05,1,0,0)">
+          <tspan x="-4.2" y="27.2">0<animate class="leap"
+            attributeName="y" values="27.2;-22.8;27.2" keyTimes="0;.5;1"
+            begin="indefinite" dur="1s"
+            calcMode="spline" keySplines=".1 .6 .4 1;.6 0 .9 .4" /></tspan>
+          <tspan x="4.2" y="42.2">0<animate class="leap" id="jump"
+            attributeName="y" values="42.2;92.2;42.2" keyTimes="0;.5;1"
+            begin="indefinite" dur="1s"
+            calcMode="spline" keySplines=".1 .6 .4 1;.6 0 .9 .4" /></tspan>
+        </text>
+      </svg>
+      
+  </body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,600&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #333;
+  fill: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+body.complete {
+  background: white;
+  fill: #333;
+  transition: background-color 1s linear, fill 1s linear;
+}
+svg {
+  font-family: 'Crimson Text';
+  width: 100%;
+  height: 10%;
+  overflow: visible;
+}
+#number {
+  font-size: 40px;
+  font-weight: 600;
+  text-anchor: end;
+}
+#slash {
+  font-size:36px;
+  text-anchor: middle;
+  font-style: italic;
+}
+#zeros {
+  font-size: 20px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+</style>
+
+<script>
+const number = document.querySelector('#number')
+const leaps = document.querySelectorAll('.leap');
+let count = 0;
+let active = false;
+
+function setNumber (n) {
+  if (n == 100) { document.querySelector('body').classList.add('complete');
+  } else if (active) return;
+
+  active = true;
+  
+  number.textContent = n;
+  leaps.forEach(el => el.beginElement());
+}
+
+document.querySelector('#jump').addEventListener('endEvent', () => active = false)
+
+/*
+choose any way to set the progress,
+just call setNumber() until n==100
+*/
+const id = setInterval(() => {
+  setNumber(++count);
+  if (count > 99) clearInterval(id);
+}, 2000);    
+</script>
