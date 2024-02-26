@@ -1,0 +1,288 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nav</title>
+  </head>
+  <body>
+    <div class="page">
+        <nav id="header">
+            <a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i><small>&nbsp;MENU</small></a>
+    
+        </nav>
+        <main id="content">
+            <p>
+                To open the menu, click the menu icon, on the top left corner<br>
+                OR<br>
+                <a href="#menu" class="button">Click here</a>
+            </p>
+            <p>
+                <small>This is pen use <a href="https://mmenujs.com/" target="_blank">mmenu.js</a>.</small><br />
+                <small>Also exists in light version <a href="https://mmenujs.com/mmenu-light/" target="_blank">mmenu-light.js</a>.</small>
+            </p>
+        </main>
+    </div>
+    
+    <nav id="menu">
+        <ul class="navigation-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a>
+                <ul>
+                    <li><a href="#">Dog Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Beds & Furniture</a></li>
+                            <li><a href="#">Outdoor Supplies</a></li>
+                            <li><a href="#">Clothing</a></li>
+                        </ul>
+                    </li>
+    
+                    <li><a href="#">Cat Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Beds & Furniture</a></li>
+                        </ul>
+                    </li>
+    
+                    <li><a href="#">Bird Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Furniture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Fish Supplies</a>
+                        <ul>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#">Aquariums</a></li>
+                            <li><a href="#">Rocks & Decorations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+    
+            <li><a href="#">Services</a>
+                <ul>
+                    <li><a href="#">Grooming</a>
+                        <ul>
+                            <li><a href="#">Coat Care</a></li>
+                            <li><a href="#">Nail Care</a></li>
+                            <li><a href="#">Doggie Deluxe Spa Day</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Boarding</a>
+                        <ul>
+                            <li><a href="#">Short Term Boarding</a></li>
+                            <li><a href="#">Doggie Daycare</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Locations & Hours</a>
+                <ul>
+                    <li><a href="#">North America</a></li>
+                    <li><a href="#">Europe</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About Us</a>
+                <ul>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/mmenu-js/9.3.0/mmenu.js"></script>
+  </body>
+</html>
+
+<style>
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mmenu-js/9.3.0/mmenu.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
+
+:root {
+	--color-primary: #5888aa;
+	--color-callout: #fad188;
+	--color-text: #fff;
+	--color-dark-bg: #030305;
+	--color-dark-border: #2a6787;
+	--color-light-bg: rgb(255 255 255 / 15%);
+	--color-light-border: rgb(255 255 255 / 60%);
+	--color-gold: #ffda71;
+	--color-silver: #ced0ca;
+	--color-bronze: #bba6a2;
+	--section-padding: clamp(85px, 15vw, 150px);
+	--container-padding: clamp(15px, 4vw, 30px);
+}
+
+.high-contrast {
+	--color-primary: #265d79;
+	--color-callout: #fff;
+	--color-dark-bg: #22526c;
+	--color-dark-border: #22526c;
+	--color-light-bg: #fff;
+	--color-light-border: #fff;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,
+body,
+[id] {
+	scroll-margin-top: 50px;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 22px;
+	color: #666;
+	background-color: #fff;
+	-webkit-text-size-adjust: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 130%;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+body {
+	--mm-min-size: 190px;
+}
+
+#menu:not(.mm-menu):not(.mm) {
+	display: none;
+}
+
+#header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	height: 50px;
+	font-size: 18px;
+	font-weight: 400;
+	color: #fff;
+	background: var(--header-color, #bba6a2);
+	box-shadow: 0 0 2em rgb(0 0 0 / 30%);
+}
+#header>a {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 10px;
+	width: 50px;
+	height: 50px;
+	text-decoration: none;
+}
+#header>a[href="#menu"] {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.mm-wrapper--opened #header>a[href="#menu"] {
+	display: none;
+}
+#header>a[href="#page"] {
+	display: none;
+}
+.mm-wrapper--opened #header>a[href="#page"] {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+#content {
+	font-size: 20px;
+	position: relative;
+	padding: 125px 50px 50px 50px;
+	text-align: center;
+	line-height: 1.5em;
+	color: var(--color-text);
+	background: var(--color-dark-bg)
+		url(https://images.unsplash.com/photo-1695146695494-f74c1ccbcba0);
+	background-size: cover;
+	background-attachment: fixed;
+	min-height: 100dvh;
+	text-shadow: 0 0 2em var(--color-dark-bg);
+}
+small {
+	color: var(--color-silver);
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+	new Mmenu("#menu", {
+		offCanvas: {
+			position: "left"
+		},
+		theme: "black",
+		counters: {
+			add: true
+		},
+		iconbar: {
+			use: true,
+			top: [
+				"<a href='#/'><i class='fa fa-home' aria-hidden='true'></i></a>",
+				"<a href='#/'><i class='fa fa-user' aria-hidden='true'></i></a>",
+			],
+			bottom: [
+				"<a href='#/'><i class='fa-brands fa-twitter' aria-hidden='true'></i></a>",
+				"<a href='#/'><i class='fa-brands fa-facebook' aria-hidden='true'></i></a>",
+				"<a href='#/'><i class='fa-brands fa-linkedin' aria-hidden='true'></i></a>",
+			]
+		},
+		navbars: [
+			{
+				position: "top",
+				content: ["searchfield"]
+			}
+		]
+	});
+});
+</script>
