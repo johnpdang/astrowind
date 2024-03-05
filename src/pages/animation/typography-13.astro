@@ -1,0 +1,147 @@
+---
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography</title>
+  </head>
+  <body>
+<!-- Tutorial: https://youtu.be/Wxnpze5LK3Y -->
+<div id="slider">
+    <div class="span">We excel at</div>
+    <div class="span" id="sliderValue"></div>
+  </div>
+  
+  <div class="youtube">
+    <style>
+      .youtube {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        left: auto;
+        right: auto;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px 50px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        font-weight: 700;
+        color: #0077ee !important;
+      }
+    </style>
+    https://youtu.be/Wxnpze5LK3Y
+  </div>
+    </body>
+</html>
+
+<style>
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 auto;
+  background-color: #191a1e;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#slider {
+  width: 600px;
+  display: flex;
+  gap: 15px;
+  font-size: 30px;
+}
+
+#sliderValue {
+  display: flex;
+  color: #0077ee;
+    font-weight: 700;
+}
+
+.start {
+  opacity: 0;
+}
+
+.animation {
+  animation: fade .3s forwards;
+}
+
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.holder-animation {
+  animation: holder 4s;
+}
+
+@keyframes holder {
+  0%{
+    opacity: 1;
+  }
+  95%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+</style>
+
+<script>
+// Tutorial: https://youtu.be/Wxnpze5LK3Y
+
+var sliderCounter = 0;
+var sliderContent = [
+  "Web Development",
+  "WordPress Development",
+  "App Development",
+  "Plugin Development",
+  "CRM Integrations"
+];
+var slider = document.querySelector("#slider");
+var sliderValue = document.querySelector("#sliderValue");
+
+function slide() {
+  if (sliderCounter >= sliderContent.length) {
+    sliderCounter = 0;
+  }
+
+  sliderValue.innerHTML = "";
+  
+  sliderValue.classList.remove("holder-animation");
+  void sliderValue.offsetWidth;
+  sliderValue.classList.add("holder-animation");
+  
+  for (i = 0; i < sliderContent[sliderCounter].length; i++) {
+    let letterDiv = document.createElement("div");
+    letterDiv.innerHTML = sliderContent[sliderCounter][i];
+
+    if (letterDiv.innerHTML == " ") {
+      letterDiv.innerHTML = "&nbsp;";
+    }
+    letterDiv.classList.add("start");
+    letterDiv.classList.add("animation");
+    letterDiv.style.animationDelay = i / 10 + "s";
+    sliderValue.appendChild(letterDiv);
+  }
+
+  sliderCounter++;
+}
+
+slide();
+setInterval(slide, 4000);
+</script>
